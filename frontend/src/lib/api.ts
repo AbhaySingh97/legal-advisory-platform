@@ -2,11 +2,16 @@ import axios from 'axios'
 import type { Article, LandmarkCase, Procedure, QuickReply, ChatMessage, ChatResponse } from '@/types'
 
 const getBaseUrl = () => {
-    let url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+    let url = process.env.NEXT_PUBLIC_API_URL
 
-    // Fix for malformed URL in production - FORCE correct URL
-    if (url.includes('tender-creation-production.up.railway.app')) {
-        return 'https://legal-advisory-platform-production.up.railway.app'
+    // If no env var is set, or it's localhost but we're in the browser and not on localhost
+    if (!url || url.includes('localhost')) {
+        if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
+            // We are in production but using localhost URL or no URL - fallback to production backend
+            url = 'https://legal-advisory-platform-production.up.railway.app'
+        } else {
+            url = url || 'http://localhost:8000'
+        }
     }
 
     // Remove trailing slash if present

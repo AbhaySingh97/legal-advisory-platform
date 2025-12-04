@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings
+from pydantic import validator
 from typing import List
 
 
@@ -21,7 +22,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # CORS
-    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:3001"
+    CORS_ORIGINS: str = "*"
     
     # Environment
     ENVIRONMENT: str = "development"
@@ -35,6 +36,15 @@ class Settings(BaseSettings):
         """Convert CORS origins string to list."""
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",")]
     
+    @validator("DATABASE_URL", pre=True)
+    def assemble_db_connection(cls, v: str | None, values: dict[str, any]) -> str:
+        if isinstance(v, str):
+            if v.startswith("postgres://"):
+                return v.replace("postgres://", "postgresql+asyncpg://", 1)
+            if v.startswith("postgresql://"):
+                return v.replace("postgresql://", "postgresql+asyncpg://", 1)
+        return v
+
     class Config:
         env_file = ".env"
         case_sensitive = True

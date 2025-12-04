@@ -1,105 +1,47 @@
-# Legal Advisory Platform - Error Resolution Guide
+# Deployment Fixes Resolution
 
-## Current Status
+We have identified and resolved several critical issues that were preventing your deployed site from displaying data (blank library, unresponsive chatbot).
 
-All code files are **correctly written**. The TypeScript errors you're seeing are **expected** because:
+## Summary of Fixes
 
-1. **Dependencies are not installed** (`node_modules` folder doesn't exist)
-2. TypeScript can't find type definitions for React, Next.js, and other libraries
+### 1. Backend Database Connection (Critical)
+- **Issue:** The production environment (likely Railway) uses PostgreSQL, but the required driver (`asyncpg`) was missing from `requirements.txt`. This caused the backend to crash or fail to connect to the database.
+- **Fix:** Added `asyncpg` to `backend/requirements.txt`.
+- **Fix:** Updated `backend/app/core/config.py` to automatically convert standard PostgreSQL URLs (e.g., `postgres://...`) to the required async format (`postgresql+asyncpg://...`).
 
-## How to Fix All Errors
+### 2. CORS Configuration
+- **Issue:** The backend was restricting access to specific origins (`localhost`), which blocked the deployed frontend from fetching data.
+- **Fix:** Updated `backend/app/core/config.py` to allow ALL origins (`*`) temporarily. This ensures the frontend can communicate with the backend regardless of the domain name.
 
-### Step 1: Install Frontend Dependencies
+### 3. Frontend API Configuration
+- **Issue:** The frontend API client had brittle logic for determining the backend URL, potentially pointing to an incorrect or unreachable address.
+- **Fix:** Refactored `frontend/src/lib/api.ts` to:
+    - Prioritize the `NEXT_PUBLIC_API_URL` environment variable.
+    - Fallback to the production backend URL (`https://legal-advisory-platform-production.up.railway.app`) if running in a production environment (browser) and no env var is set.
+    - Correctly handle localhost development.
 
-Open **Command Prompt** (not PowerShell to avoid execution policy issues):
+## Next Steps (Required)
 
-```cmd
-cd "c:\Users\User\OneDrive\Desktop\FULL STACK\NLM MODEL\legal-advisory-platform\frontend"
-npm install
-```
+To apply these fixes, you must redeploy both the backend and frontend services.
 
-This will:
-- Download all required packages
-- Create `node_modules` folder
-- Install TypeScript type definitions
-- **Resolve ALL TypeScript errors automatically**
+1.  **Commit and Push Changes:**
+    ```bash
+    git add .
+    git commit -m "Fix deployment issues: add asyncpg, fix CORS, update API URL logic"
+    git push origin main
+    ```
 
-### Step 2: Verify Installation
+2.  **Redeploy on Railway (or your hosting provider):**
+    - Ensure both the **Backend** and **Frontend** services trigger a new deployment.
+    - **Backend:** Check the deployment logs. It should now install `asyncpg` and start successfully without database connection errors.
+    - **Frontend:** Check the build logs.
 
-After `npm install` completes, you should see:
-- `node_modules` folder created
-- `package-lock.json` file created
-- All TypeScript errors disappear in VS Code
+3.  **Verify:**
+    - Open your deployed frontend URL.
+    - The library should now load articles.
+    - The chatbot should respond to messages.
 
-### Step 3: Install Backend Dependencies
-
-```cmd
-cd ..\backend
-python -m venv venv
-.\venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-## Why Are There So Many Errors?
-
-The errors you see are NOT code errors. They are:
-
-### TypeScript Cannot Find Modules
-```
-Cannot find module 'react'
-Cannot find module '@tanstack/react-query'
-Cannot find module 'lucide-react'
-```
-**Reason**: These packages aren't installed yet
-
-### JSX Type Errors
-```
-JSX element implicitly has type 'any'
-```
-**Reason**: React type definitions aren't available
-
-### Implicit Any Types
-```
-Parameter 'e' implicitly has an 'any' type
-```
-**Reason**: TypeScript strict mode is enabled but type definitions are missing
-
-## What I've Already Fixed
-
-✅ **Reserved keyword issue** in `cases/page.tsx`
-- Changed `case` prop to `caseData` (case is a JavaScript reserved word)
-
-✅ **All component logic** is correct
-✅ **All imports** are correct  
-✅ **All TypeScript types** are correct
-
-## Expected Behavior
-
-**Before `npm install`:**
-- 200+ TypeScript errors
-- Red squiggly lines everywhere
-- "Cannot find module" errors
-
-**After `npm install`:**
-- 0 errors
-- Clean code
-- Full IntelliSense support
-
-## Quick Test
-
-After installing dependencies, run:
-
-```cmd
-npm run dev
-```
-
-The development server should start without errors at http://localhost:3000
-
-## Summary
-
-**The code is perfect!** You just need to install dependencies. Think of it like:
-- You have a recipe (code) ✅
-- But the ingredients (node_modules) aren't in the kitchen yet ❌
-- Once you buy the ingredients (`npm install`), you can cook! ✅
-
-Run `npm install` and all errors will disappear! 🎉
+## Troubleshooting
+If issues persist:
+- Check the **Backend Logs** for any "Internal Server Error" or database connection failures.
+- Check the **Browser Console** (F12) on the frontend for any red network errors (404, 500, or CORS blocked).
