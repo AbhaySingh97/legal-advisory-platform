@@ -57,11 +57,22 @@ def load_json_data():
         return json.load(f)
 
 
+from app.core.config import settings
+
 def migrate_data(clear_existing=False):
-    """Migrate data from JSON to SQLite database."""
+    """Migrate data from JSON to database."""
+    
+    # Get database URL from settings
+    db_url = settings.DATABASE_URL
+    
+    # Convert async URL to sync URL for migration script
+    if "+asyncpg" in db_url:
+        db_url = db_url.replace("+asyncpg", "")
+    
+    print(f"Connecting to database: {db_url.split('@')[-1] if '@' in db_url else 'sqlite'}")
     
     # Create synchronous engine for migration
-    engine = create_engine("sqlite:///./legal_db.sqlite", echo=True)
+    engine = create_engine(db_url, echo=True)
     
     # Create tables
     print("Creating database tables...")
