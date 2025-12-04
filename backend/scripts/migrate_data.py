@@ -66,10 +66,13 @@ def migrate_data(clear_existing=False):
     db_url = settings.DATABASE_URL
     
     # Convert async URL to sync URL for migration script
+    # Remove async drivers: +asyncpg for PostgreSQL, +aiosqlite for SQLite
     if "+asyncpg" in db_url:
         db_url = db_url.replace("+asyncpg", "")
+    if "+aiosqlite" in db_url:
+        db_url = db_url.replace("+aiosqlite", "")
     
-    print(f"Connecting to database: {db_url.split('@')[-1] if '@' in db_url else 'sqlite'}")
+    print(f"Connecting to database: {db_url.split('@')[-1] if '@' in db_url else db_url}")
     
     # Create synchronous engine for migration
     engine = create_engine(db_url, echo=True)
