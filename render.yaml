@@ -1,0 +1,49 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: legal-advisory-db
+    env: docker
+    plan: free
+    region: oregon
+    databases:
+      - name: legal_advisory_db
+        databaseName: legal_advisory_db
+        user: legal_user
+
+  # Backend API (FastAPI)
+  - type: web
+    name: legal-advisory-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "chmod +x backend/build.sh && backend/build.sh"
+    startCommand: "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: legal-advisory-db
+          property: connectionString
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: ENVIRONMENT
+        value: production
+    healthCheckPath: /health
+
+  # Frontend (Next.js)
+  - type: web
+    name: legal-advisory-frontend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: "cd frontend && npm install && npm run build"
+    startCommand: "cd frontend && npm start"
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: legal-advisory-backend
+          property: host

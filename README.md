@@ -45,8 +45,7 @@ A comprehensive full-stack legal advisory platform for Indian Constitution, land
 
 ### DevOps
 - **Containerization**: Docker & Docker Compose
-- **Frontend Deployment**: Vercel (recommended)
-- **Backend Deployment**: Railway/Render
+- **Deployment**: Render.com (free tier available)
 - **Version Control**: Git
 
 ## 📁 Project Structure
@@ -254,25 +253,40 @@ npm run test
 
 ## 📦 Deployment
 
-### Frontend (Vercel)
+### Quick Deploy to Render.com (Recommended)
+
+**See [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md) for detailed instructions.**
 
 1. **Push code to GitHub**
-2. **Connect repository to Vercel**
+2. **Create Render account** at [render.com](https://render.com)
+3. **Deploy using Blueprint**:
+   - Connect your GitHub repository
+   - Render will auto-detect `render.yaml`
+   - Click "Apply" to deploy all services
+4. **Wait for deployment** (5-10 minutes)
+5. **Access your app** at the provided URLs
+
+### Manual Deployment
+
+#### Frontend (Vercel/Netlify)
+
+1. **Push code to GitHub**
+2. **Connect repository to Vercel/Netlify**
 3. **Set environment variables**:
-   - `NEXT_PUBLIC_API_URL=https://your-backend-url.com`
+   - `NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com`
 4. **Deploy**
 
-### Backend (Railway/Render)
+#### Backend (Render.com)
 
-1. **Push code to GitHub**
-2. **Create new service on Railway/Render**
+1. **Create PostgreSQL database** on Render
+2. **Create Web Service** for backend
 3. **Set environment variables**:
-   - `DATABASE_URL`
-   - `REDIS_URL`
-   - `SECRET_KEY`
-   - `CORS_ORIGINS`
-4. **Run migration**: `python scripts/migrate_data.py`
-5. **Deploy**
+   - `DATABASE_URL` (from Render database)
+   - `CORS_ORIGINS=*`
+   - `ENVIRONMENT=production`
+4. **Build command**: `chmod +x backend/build.sh && backend/build.sh`
+5. **Start command**: `cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+6. **Deploy**
 
 ## 🔧 Configuration
 
