@@ -1,8 +1,26 @@
 import axios from 'axios'
 import type { Article, LandmarkCase, Procedure, QuickReply, ChatMessage, ChatResponse } from '@/types'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+const getBaseUrl = () => {
+    let url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+    
+    // Fix for malformed URL in production
+    if (url.includes('=tender-creation-production.up.railway.app')) {
+        url = url.split('=')[0]
+    }
+    
+    // Remove trailing slash if present
+    return url.endsWith('/') ? url.slice(0, -1) : url
+}
+
+const API_URL = getBaseUrl()
 const API_V1 = `${API_URL}/api/v1`
+
+console.log('API Configuration:', {
+    rawUrl: process.env.NEXT_PUBLIC_API_URL,
+    sanitizedUrl: API_URL,
+    apiUrl: API_V1
+})
 
 const api = axios.create({
     baseURL: API_V1,
