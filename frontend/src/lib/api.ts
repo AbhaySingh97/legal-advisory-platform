@@ -3,12 +3,12 @@ import type { Article, LandmarkCase, Procedure, QuickReply, ChatMessage, ChatRes
 
 const getBaseUrl = () => {
     let url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
-    
-    // Fix for malformed URL in production
-    if (url.includes('=tender-creation-production.up.railway.app')) {
-        url = url.split('=')[0]
+
+    // Fix for malformed URL in production - FORCE correct URL
+    if (url.includes('tender-creation-production.up.railway.app')) {
+        return 'https://legal-advisory-platform-production.up.railway.app'
     }
-    
+
     // Remove trailing slash if present
     return url.endsWith('/') ? url.slice(0, -1) : url
 }
