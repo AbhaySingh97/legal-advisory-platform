@@ -42,8 +42,3 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
-      - key: NEXT_PUBLIC_API_URL
-        fromService:
-          type: web
-          name: legal-advisory-backend
-          property: host
