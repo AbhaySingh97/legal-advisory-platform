@@ -16,11 +16,11 @@ export default function Navbar() {
     ]
 
     return (
-        <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200/50">
+        <nav className="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-white/10">
             <div className="container-custom">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center space-x-2 font-display font-bold text-xl text-primary-600">
+                    <Link href="/" className="flex items-center space-x-2 font-display font-bold text-xl text-primary-400">
                         <Scale className="w-8 h-8" />
                         <span className="hidden sm:inline">Legal Advisory</span>
                     </Link>
@@ -31,7 +31,7 @@ export default function Navbar() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 transition-colors font-medium"
+                                className="flex items-center space-x-1 text-gray-300 hover:text-white transition-colors font-medium"
                             >
                                 {link.icon && <link.icon className="w-4 h-4" />}
                                 <span>{link.label}</span>
