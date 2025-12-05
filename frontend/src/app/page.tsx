@@ -5,8 +5,20 @@ export default function HomePage() {
     return (
         <div className="min-h-screen">
             {/* Hero Section */}
-            <section className="gradient-bg text-white py-20 md:py-32">
-                <div className="container-custom">
+            <section className="relative text-white py-20 md:py-32 overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <img
+                        src="/supreme-court.png"
+                        alt="Supreme Court of India"
+                        className="w-full h-full object-cover object-center md:object-center"
+                    />
+                    {/* Overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-secondary-900/90"></div>
+                </div>
+
+                {/* Content */}
+                <div className="container-custom relative z-10">
                     <div className="max-w-4xl mx-auto text-center animate-fade-in">
                         <div className="flex justify-center mb-6">
                             <Scale className="w-16 h-16 md:w-20 md:h-20" />

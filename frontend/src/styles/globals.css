@@ -54,17 +54,52 @@
 
 /* Mobile-specific improvements */
 @media (max-width: 640px) {
+
     /* Prevent zoom on iOS when focusing inputs */
     body {
         font-size: 16px;
     }
-    
-    input, textarea, select {
+
+    input,
+    textarea,
+    select {
         font-size: 16px;
     }
-    
+
     /* Ensure touch targets are large enough */
-    button, a {
+    button,
+    a {
         min-height: 44px;
+    }
+}
+
+/* Responsive background image handling */
+.hero-background {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-background img {
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Ensure proper image positioning on different devices */
+@media (max-width: 640px) {
+    .hero-background img {
+        object-position: center 30%;
+        /* Focus on building on mobile */
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .hero-background img {
+        object-position: center center;
+    }
+}
+
+@media (min-width: 1025px) {
+    .hero-background img {
+        object-position: center center;
     }
 }
