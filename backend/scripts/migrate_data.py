@@ -117,7 +117,7 @@ def migrate_data(clear_existing=False):
             for case_data in data['landmark_cases']:
                 case = LandmarkCase(
                     name=case_data['name'],
-                    year=case_data['year'],
+                    year=int(case_data['year']),  # Convert string to int
                     significance=case_data['significance'],
                     key_points=case_data['key_points'],
                     keywords=case_data['keywords']
