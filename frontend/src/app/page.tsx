@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Scale, MessageSquare, BookOpen, Gavel, FileText, TrendingUp } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer, fadeIn } from '@/lib/animations'
+import { fadeInUp, staggerContainer } from '@/lib/animations'
 
 export default function HomePage() {
     return (
