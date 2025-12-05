@@ -35,7 +35,7 @@ export default function LibraryPage() {
                 <img
                     src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1920&q=80"
                     alt="Law Library"
-                    className="w-full h-full object-cover opacity-60"
+                    className="w-full h-full object-cover object-center opacity-60"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>

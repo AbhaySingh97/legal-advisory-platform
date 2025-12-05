@@ -36,7 +36,7 @@ export default function CasesPage() {
                 <img
                     src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
                     alt="Supreme Court"
-                    className="w-full h-full object-cover opacity-70"
+                    className="w-full h-full object-cover object-center opacity-70"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>

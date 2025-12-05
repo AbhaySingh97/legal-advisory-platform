@@ -9,7 +9,7 @@ export default function HomePage() {
                 <img
                     src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
                     alt="Supreme Court of India"
-                    className="w-full h-full object-cover opacity-40"
+                    className="w-full h-full object-cover object-center opacity-40"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/80 to-gray-900/90"></div>
             </div>

@@ -23,13 +23,13 @@ export default function ProceduresPage() {
     return (
         <div className="min-h-screen relative">
             {/* Background Image */}
-            <div className="fixed inset-0 z-0">
+            <div className="fixed inset-0 z-0 pointer-events-none">
                 <img
-                    src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=1920&q=80"
-                    alt="Justice Scales"
-                    className="w-full h-full object-cover opacity-15"
+                    src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=80"
+                    alt="Legal Documents"
+                    className="w-full h-full object-cover object-center opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>
 
             {/* Content */}
@@ -37,15 +37,6 @@ export default function ProceduresPage() {
                 <div className="container-custom">
                     {/* Header */}
                     <div className="text-center mb-12">
-                        {/* Background Image */}
-                        <div className="fixed inset-0 z-0 pointer-events-none">
-                            <img
-                                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=80"
-                                alt="Legal Documents"
-                                className="w-full h-full object-cover opacity-60"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
-                        </div>
                         <h1 className="text-4xl font-display font-bold mb-4 text-white">Legal Procedures</h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
                             Step-by-step guides for various legal processes and procedures

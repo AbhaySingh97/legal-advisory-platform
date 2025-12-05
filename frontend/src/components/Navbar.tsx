@@ -2,10 +2,13 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { Scale, Menu, X, MessageSquare, BookOpen, Gavel, FileText } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
+import { Scale, Menu, X, MessageSquare, BookOpen, Gavel, FileText, ArrowLeft } from 'lucide-react'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
+    const pathname = usePathname()
+    const router = useRouter()
 
     const navLinks = [
         { href: '/', label: 'Home', icon: null },
@@ -19,11 +22,22 @@ export default function Navbar() {
         <nav className="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-white/10">
             <div className="container-custom">
                 <div className="flex justify-between items-center h-16">
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center space-x-2 font-display font-bold text-xl text-primary-400">
-                        <Scale className="w-8 h-8" />
-                        <span className="hidden sm:inline">Legal Advisory</span>
-                    </Link>
+                    {/* Logo & Back Button */}
+                    <div className="flex items-center gap-4">
+                        {pathname !== '/' && (
+                            <button
+                                onClick={() => router.back()}
+                                className="p-2 text-gray-300 hover:text-white transition-colors rounded-full hover:bg-white/10"
+                                aria-label="Go back"
+                            >
+                                <ArrowLeft className="w-6 h-6" />
+                            </button>
+                        )}
+                        <Link href="/" className="flex items-center space-x-2 font-display font-bold text-xl text-primary-400">
+                            <Scale className="w-8 h-8" />
+                            <span className="hidden sm:inline">Legal Advisory</span>
+                        </Link>
+                    </div>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-8">
