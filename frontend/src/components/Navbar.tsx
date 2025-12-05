@@ -16,7 +16,7 @@ export default function Navbar() {
     ]
 
     return (
-        <nav className="bg-white shadow-md sticky top-0 z-50">
+        <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200/50">
             <div className="container-custom">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}

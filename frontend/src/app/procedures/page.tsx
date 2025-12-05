@@ -37,8 +37,14 @@ export default function ProceduresPage() {
                 <div className="container-custom">
                     {/* Header */}
                     <div className="text-center mb-12">
-                        <div className="flex justify-center mb-4">
-                            <FileText className="w-16 h-16 text-primary-400" />
+                        {/* Background Image */}
+                        <div className="fixed inset-0 z-0 pointer-events-none">
+                            <img
+                                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=80"
+                                alt="Legal Documents"
+                                className="w-full h-full object-cover opacity-40"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/80 to-gray-900/90"></div>
                         </div>
                         <h1 className="text-4xl font-display font-bold mb-4 text-white">Legal Procedures</h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
