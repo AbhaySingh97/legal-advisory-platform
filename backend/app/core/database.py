@@ -2,11 +2,17 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sess
 from sqlalchemy.orm import declarative_base
 from app.core.config import settings
 
-# Create async engine for SQLite
+# Conditionally set connect_args based on database type
+# SQLite needs check_same_thread=False, but PostgreSQL doesn't support this parameter
+connect_args = {}
+if "sqlite" in settings.DATABASE_URL.lower():
+    connect_args = {"check_same_thread": False}
+
+# Create async engine
 engine = create_async_engine(
     settings.DATABASE_URL,
     echo=settings.ENVIRONMENT == "development",
-    connect_args={"check_same_thread": False}  # Needed for SQLite
+    connect_args=connect_args
 )
 
 # Create async session factory
