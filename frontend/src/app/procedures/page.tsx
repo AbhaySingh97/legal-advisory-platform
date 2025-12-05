@@ -21,74 +21,87 @@ export default function ProceduresPage() {
     })
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12">
-            <div className="container-custom">
-                {/* Header */}
-                <div className="text-center mb-12">
-                    <div className="flex justify-center mb-4">
-                        <FileText className="w-16 h-16 text-primary-600" />
-                    </div>
-                    <h1 className="text-4xl font-display font-bold mb-4">Legal Procedures</h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Step-by-step guides for various legal processes and procedures
-                    </p>
-                </div>
+        <div className="min-h-screen relative">
+            {/* Background Image */}
+            <div className="fixed inset-0 z-0">
+                <img
+                    src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=1920&q=80"
+                    alt="Justice Scales"
+                    className="w-full h-full object-cover opacity-15"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
+            </div>
 
-                {/* Search */}
-                <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-                    <div className="relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                        <input
-                            type="text"
-                            placeholder="Search procedures by name or keywords..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                        />
+            {/* Content */}
+            <div className="relative z-10 py-12">
+                <div className="container-custom">
+                    {/* Header */}
+                    <div className="text-center mb-12">
+                        <div className="flex justify-center mb-4">
+                            <FileText className="w-16 h-16 text-primary-400" />
+                        </div>
+                        <h1 className="text-4xl font-display font-bold mb-4 text-white">Legal Procedures</h1>
+                        <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                            Step-by-step guides for various legal processes and procedures
+                        </p>
                     </div>
 
-                    {/* Active Search */}
-                    {searchQuery && (
-                        <div className="flex flex-wrap gap-2 mt-4">
-                            <span className="inline-flex items-center bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">
-                                Search: {searchQuery}
-                                <button onClick={() => setSearchQuery('')} className="ml-2">
-                                    <X className="w-4 h-4" />
-                                </button>
-                            </span>
+                    {/* Search */}
+                    <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 p-6 mb-8">
+                        <div className="relative">
+                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                            <input
+                                type="text"
+                                placeholder="Search procedures by name or keywords..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            />
+                        </div>
+
+                        {/* Active Search */}
+                        {searchQuery && (
+                            <div className="flex flex-wrap gap-2 mt-4">
+                                <span className="inline-flex items-center bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">
+                                    Search: {searchQuery}
+                                    <button onClick={() => setSearchQuery('')} className="ml-2">
+                                        <X className="w-4 h-4" />
+                                    </button>
+                                </span>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Results Count */}
+                    {procedures && (
+                        <div className="mb-4 text-gray-200">
+                            Found <span className="font-semibold text-white">{procedures.length}</span> procedure{procedures.length !== 1 && 's'}
+                        </div>
+                    )}
+
+                    {/* Procedures List */}
+                    {isLoading ? (
+                        <div className="text-center py-12">
+                            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-400"></div>
+                            <p className="mt-4 text-gray-300">Loading procedures...</p>
+                        </div>
+                    ) : procedures && procedures.length > 0 ? (
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {procedures.map((procedure) => (
+                                <ProcedureCard
+                                    key={procedure.id}
+                                    procedure={procedure}
+                                    onClick={() => setSelectedProcedure(procedure)}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-12 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg">
+                            <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                            <p className="text-gray-600">No procedures found. Try adjusting your search.</p>
                         </div>
                     )}
                 </div>
-
-                {/* Results Count */}
-                {procedures && (
-                    <div className="mb-4 text-gray-600">
-                        Found <span className="font-semibold">{procedures.length}</span> procedure{procedures.length !== 1 && 's'}
-                    </div>
-                )}
-
-                {/* Procedures List */}
-                {isLoading ? (
-                    <div className="text-center py-12">
-                        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-                        <p className="mt-4 text-gray-600">Loading procedures...</p>
-                    </div>
-                ) : procedures && procedures.length > 0 ? (
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {procedures.map((procedure) => (
-                            <ProcedureCard
-                                key={procedure.id}
-                                procedure={procedure}
-                                onClick={() => setSelectedProcedure(procedure)}
-                            />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-12 bg-white rounded-xl">
-                        <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                        <p className="text-gray-600">No procedures found. Try adjusting your search.</p>
-                    </div>
-                )}
             </div>
 
             {/* Procedure Detail Modal */}
@@ -103,7 +116,7 @@ function ProcedureCard({ procedure, onClick }: { procedure: Procedure; onClick: 
     return (
         <div
             onClick={onClick}
-            className="card cursor-pointer group hover:scale-105 transition-transform duration-200"
+            className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-white/20"
         >
             <div className="flex items-start justify-between mb-3">
                 <div className="bg-primary-100 p-2 rounded-lg">
@@ -111,12 +124,12 @@ function ProcedureCard({ procedure, onClick }: { procedure: Procedure; onClick: 
                 </div>
                 <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors" />
             </div>
-            <h3 className="text-lg font-bold mb-2 group-hover:text-primary-600 transition-colors line-clamp-2">
+            <h3 className="text-lg font-bold mb-2 text-white transition-colors line-clamp-2">
                 {procedure.name}
             </h3>
-            <p className="text-sm text-gray-600 mb-4 line-clamp-3">{procedure.description}</p>
+            <p className="text-sm text-gray-300 mb-4 line-clamp-3">{procedure.description}</p>
             <div className="flex items-center text-xs">
-                <span className="text-primary-600 font-medium">View procedure →</span>
+                <span className="text-primary-400 font-medium">View procedure →</span>
             </div>
         </div>
     )

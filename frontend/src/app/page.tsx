@@ -3,22 +3,20 @@ import { Scale, MessageSquare, BookOpen, Gavel, FileText, TrendingUp } from 'luc
 
 export default function HomePage() {
     return (
-        <div className="min-h-screen">
-            {/* Hero Section */}
-            <section className="relative text-white py-20 md:py-32 overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0">
-                    <img
-                        src="/supreme-court.png"
-                        alt="Supreme Court of India"
-                        className="w-full h-full object-cover object-center md:object-center"
-                    />
-                    {/* Overlay for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-secondary-900/90"></div>
-                </div>
+        <div className="min-h-screen relative">
+            {/* Background Image for entire page */}
+            <div className="fixed inset-0 z-0">
+                <img
+                    src="/supreme-court.png"
+                    alt="Supreme Court of India"
+                    className="w-full h-full object-cover opacity-15"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
+            </div>
 
-                {/* Content */}
-                <div className="container-custom relative z-10">
+            {/* Hero Section */}
+            <section className="relative text-white py-20 md:py-32 z-10">
+                <div className="container-custom">
                     <div className="max-w-4xl mx-auto text-center animate-fade-in">
                         <div className="flex justify-center mb-6">
                             <Scale className="w-16 h-16 md:w-20 md:h-20" />
@@ -44,9 +42,9 @@ export default function HomePage() {
             </section>
 
             {/* Features Grid */}
-            <section className="py-20 bg-gray-50">
+            <section className="py-20 relative z-10">
                 <div className="container-custom">
-                    <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12 text-white">
                         Comprehensive Legal Resources
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -91,7 +89,7 @@ export default function HomePage() {
             </section>
 
             {/* Statistics Section */}
-            <section className="py-20 gradient-bg text-white">
+            <section className="py-20 relative z-10">
                 <div className="container-custom">
                     <div className="grid md:grid-cols-3 gap-8 text-center">
                         <StatCard number="100+" label="Constitution Articles" />
@@ -102,9 +100,9 @@ export default function HomePage() {
             </section>
 
             {/* How It Works */}
-            <section className="py-20">
+            <section className="py-20 relative z-10">
                 <div className="container-custom">
-                    <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12 text-white">
                         How It Works
                     </h2>
                     <div className="grid md:grid-cols-3 gap-8">
@@ -128,12 +126,12 @@ export default function HomePage() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 bg-primary-50">
+            <section className="py-20 relative z-10">
                 <div className="container-custom text-center">
-                    <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-white">
                         Ready to Get Started?
                     </h2>
-                    <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                         Start exploring Indian constitutional law with our comprehensive platform.
                     </p>
                     <Link href="/chatbot" className="btn-primary inline-flex items-center">
@@ -153,12 +151,12 @@ function FeatureCard({ icon, title, description, href }: {
     href: string
 }) {
     return (
-        <Link href={href} className="card group cursor-pointer">
+        <Link href={href} className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg p-6 group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-white/20">
             <div className="mb-4">{icon}</div>
-            <h3 className="text-xl font-bold mb-3 group-hover:text-primary-600 transition-colors">
+            <h3 className="text-xl font-bold mb-3 text-white transition-colors">
                 {title}
             </h3>
-            <p className="text-gray-600">{description}</p>
+            <p className="text-gray-300">{description}</p>
         </Link>
     )
 }
@@ -166,8 +164,8 @@ function FeatureCard({ icon, title, description, href }: {
 function StatCard({ number, label }: { number: string; label: string }) {
     return (
         <div className="animate-fade-in">
-            <div className="text-5xl md:text-6xl font-bold mb-2">{number}</div>
-            <div className="text-xl text-white/90">{label}</div>
+            <div className="text-5xl md:text-6xl font-bold mb-2 text-white">{number}</div>
+            <div className="text-xl text-gray-300">{label}</div>
         </div>
     )
 }
@@ -179,11 +177,11 @@ function StepCard({ number, title, description }: {
 }) {
     return (
         <div className="text-center">
-            <div className="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+            <div className="w-16 h-16 bg-primary-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 {number}
             </div>
-            <h3 className="text-xl font-bold mb-3">{title}</h3>
-            <p className="text-gray-600">{description}</p>
+            <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
+            <p className="text-gray-300">{description}</p>
         </div>
     )
 }
