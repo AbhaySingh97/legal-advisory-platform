@@ -1,9 +1,5 @@
-'use client'
-
 import Link from 'next/link'
 import { Scale, MessageSquare, BookOpen, Gavel, FileText, TrendingUp } from 'lucide-react'
-import { motion } from 'framer-motion'
-import { fadeInUp, staggerContainer } from '@/lib/animations'
 
 export default function HomePage() {
     return (
@@ -21,12 +17,7 @@ export default function HomePage() {
             {/* Hero Section */}
             <section className="relative text-white py-20 md:py-32 z-10">
                 <div className="container-custom">
-                    <motion.div
-                        className="max-w-4xl mx-auto text-center"
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeInUp}
-                    >
+                    <div className="max-w-4xl mx-auto text-center animate-fade-in">
                         <div className="flex justify-center mb-6">
                             <Scale className="w-16 h-16 md:w-20 md:h-20" />
                         </div>
@@ -37,42 +28,26 @@ export default function HomePage() {
                             Navigate Indian Constitution, Case Laws, and Legal Procedures with AI-Powered Guidance
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto px-4 sm:px-0">
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Link href="/chatbot" className="btn-primary bg-white text-primary-600 hover:bg-gray-100">
-                                    <MessageSquare className="inline-block w-5 h-5 mr-2" />
-                                    Start Chatbot
-                                </Link>
-                            </motion.div>
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Link href="/library" className="btn-outline border-white text-white hover:bg-white hover:text-primary-600">
-                                    <BookOpen className="inline-block w-5 h-5 mr-2" />
-                                    Explore Library
-                                </Link>
-                            </motion.div>
+                            <Link href="/chatbot" className="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+                                <MessageSquare className="inline-block w-5 h-5 mr-2" />
+                                Start Chatbot
+                            </Link>
+                            <Link href="/library" className="btn-outline border-white text-white hover:bg-white hover:text-primary-600">
+                                <BookOpen className="inline-block w-5 h-5 mr-2" />
+                                Explore Library
+                            </Link>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
             {/* Features Grid */}
             <section className="py-20 relative z-10">
                 <div className="container-custom">
-                    <motion.h2
-                        className="text-3xl md:text-4xl font-display font-bold text-center mb-12 text-white"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12 text-white">
                         Comprehensive Legal Resources
-                    </motion.h2>
-                    <motion.div
-                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={staggerContainer}
-                    >
+                    </h2>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <FeatureCard
                             icon={<MessageSquare className="w-12 h-12 text-primary-600" />}
                             title="AI-Powered Chatbot"
@@ -109,46 +84,28 @@ export default function HomePage() {
                             description="Understand your fundamental rights, duties, and constitutional protections."
                             href="/library?category=Fundamental%20Rights"
                         />
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
             {/* Statistics Section */}
             <section className="py-20 relative z-10">
                 <div className="container-custom">
-                    <motion.div
-                        className="grid md:grid-cols-3 gap-8 text-center"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={staggerContainer}
-                    >
+                    <div className="grid md:grid-cols-3 gap-8 text-center">
                         <StatCard number="100+" label="Constitution Articles" />
                         <StatCard number="15+" label="Landmark Cases" />
                         <StatCard number="10+" label="Legal Procedures" />
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
             {/* How It Works */}
             <section className="py-20 relative z-10">
                 <div className="container-custom">
-                    <motion.h2
-                        className="text-3xl md:text-4xl font-display font-bold text-center mb-12 text-white"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12 text-white">
                         How It Works
-                    </motion.h2>
-                    <motion.div
-                        className="grid md:grid-cols-3 gap-8"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={staggerContainer}
-                    >
+                    </h2>
+                    <div className="grid md:grid-cols-3 gap-8">
                         <StepCard
                             number="1"
                             title="Ask Your Question"
@@ -164,32 +121,24 @@ export default function HomePage() {
                             title="Explore Related Resources"
                             description="Discover related articles, cases, and procedures for deeper understanding."
                         />
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
             {/* CTA Section */}
             <section className="py-20 relative z-10">
-                <motion.div
-                    className="container-custom text-center"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
+                <div className="container-custom text-center">
                     <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-white">
                         Ready to Get Started?
                     </h2>
                     <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                         Start exploring Indian constitutional law with our comprehensive platform.
                     </p>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Link href="/chatbot" className="btn-primary inline-flex items-center">
-                            <MessageSquare className="w-5 h-5 mr-2" />
-                            Launch Chatbot
-                        </Link>
-                    </motion.div>
-                </motion.div>
+                    <Link href="/chatbot" className="btn-primary inline-flex items-center">
+                        <MessageSquare className="w-5 h-5 mr-2" />
+                        Launch Chatbot
+                    </Link>
+                </div>
             </section>
         </div>
     )
@@ -202,30 +151,22 @@ function FeatureCard({ icon, title, description, href }: {
     href: string
 }) {
     return (
-        <motion.div variants={fadeInUp}>
-            <Link href={href} className="block">
-                <motion.div
-                    className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg p-6 h-full transition-all duration-300"
-                    whileHover={{ y: -8, scale: 1.02, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3)" }}
-                    transition={{ duration: 0.3, ease: [0.6, -0.05, 0.01, 0.99] }}
-                >
-                    <div className="mb-4">{icon}</div>
-                    <h3 className="text-xl font-bold mb-3 text-white">
-                        {title}
-                    </h3>
-                    <p className="text-gray-300">{description}</p>
-                </motion.div>
-            </Link>
-        </motion.div>
+        <Link href={href} className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg p-6 group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-white/20">
+            <div className="mb-4">{icon}</div>
+            <h3 className="text-xl font-bold mb-3 text-white transition-colors">
+                {title}
+            </h3>
+            <p className="text-gray-300">{description}</p>
+        </Link>
     )
 }
 
 function StatCard({ number, label }: { number: string; label: string }) {
     return (
-        <motion.div variants={fadeInUp}>
+        <div className="animate-fade-in">
             <div className="text-5xl md:text-6xl font-bold mb-2 text-white">{number}</div>
             <div className="text-xl text-gray-300">{label}</div>
-        </motion.div>
+        </div>
     )
 }
 
@@ -235,19 +176,12 @@ function StepCard({ number, title, description }: {
     description: string
 }) {
     return (
-        <motion.div
-            className="text-center"
-            variants={fadeInUp}
-        >
-            <motion.div
-                className="w-16 h-16 bg-primary-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4"
-                whileHover={{ scale: 1.1, rotate: 360 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-            >
+        <div className="text-center">
+            <div className="w-16 h-16 bg-primary-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 {number}
-            </motion.div>
+            </div>
             <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
             <p className="text-gray-300">{description}</p>
-        </motion.div>
+        </div>
     )
 }
