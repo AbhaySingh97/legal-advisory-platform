@@ -115,7 +115,7 @@ export default function ChatbotPage() {
                 {/* Chat Container */}
                 <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
                     {/* Messages Area */}
-                    <div className="h-[500px] overflow-y-auto p-6 space-y-4">
+                    <div className="h-[400px] md:h-[500px] overflow-y-auto p-4 md:p-6 space-y-4">
                         {messages.map((message) => (
                             <MessageBubble key={message.id} message={message} />
                         ))}
@@ -144,7 +144,7 @@ export default function ChatbotPage() {
                                     <button
                                         key={reply.id}
                                         onClick={() => handleSend(reply.text)}
-                                        className="text-sm bg-white border border-primary-200 text-primary-700 px-3 py-1.5 rounded-full hover:bg-primary-50 hover:border-primary-300 transition-colors"
+                                        className="text-sm bg-white border border-primary-200 text-primary-700 px-4 py-2.5 md:px-3 md:py-1.5 rounded-full hover:bg-primary-50 hover:border-primary-300 transition-colors"
                                     >
                                         {reply.text}
                                     </button>
@@ -162,7 +162,7 @@ export default function ChatbotPage() {
                                     onChange={(e) => setInput(e.target.value)}
                                     onKeyPress={handleKeyPress}
                                     placeholder="Type your legal question here..."
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+                                    className="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
                                     rows={1}
                                     disabled={isLoading}
                                 />
@@ -170,7 +170,7 @@ export default function ChatbotPage() {
                             <button
                                 onClick={() => handleSend()}
                                 disabled={!input.trim() || isLoading}
-                                className="bg-primary-600 text-white p-3 rounded-xl hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+                                className="bg-primary-600 text-white p-3 min-w-[48px] min-h-[48px] rounded-xl hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
                             >
                                 <Send className="w-5 h-5" />
                             </button>

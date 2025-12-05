@@ -17,7 +17,7 @@ export default function HomePage() {
                         <p className="text-xl md:text-2xl mb-8 text-white/90">
                             Navigate Indian Constitution, Case Laws, and Legal Procedures with AI-Powered Guidance
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto px-4 sm:px-0">
                             <Link href="/chatbot" className="btn-primary bg-white text-primary-600 hover:bg-gray-100">
                                 <MessageSquare className="inline-block w-5 h-5 mr-2" />
                                 Start Chatbot

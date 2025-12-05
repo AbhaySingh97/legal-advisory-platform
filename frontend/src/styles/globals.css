@@ -51,3 +51,20 @@
         @apply bg-white/10 backdrop-blur-lg border border-white/20;
     }
 }
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+    /* Prevent zoom on iOS when focusing inputs */
+    body {
+        font-size: 16px;
+    }
+    
+    input, textarea, select {
+        font-size: 16px;
+    }
+    
+    /* Ensure touch targets are large enough */
+    button, a {
+        min-height: 44px;
+    }
+}
