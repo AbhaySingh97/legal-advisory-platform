@@ -29,104 +29,117 @@ export default function CasesPage() {
         : []
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12">
-            <div className="container-custom">
-                {/* Header */}
-                <div className="text-center mb-12">
-                    <div className="flex justify-center mb-4">
-                        <Gavel className="w-16 h-16 text-primary-600" />
-                    </div>
-                    <h1 className="text-4xl font-display font-bold mb-4">Landmark Cases</h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Explore landmark judgments that shaped Indian constitutional law
-                    </p>
-                </div>
+        <div className="min-h-screen relative">
+            {/* Background Image */}
+            <div className="fixed inset-0 z-0">
+                <img
+                    src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
+                    alt="Courtroom"
+                    className="w-full h-full object-cover opacity-15"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
+            </div>
 
-                {/* Search and Filter */}
-                <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-                    <div className="grid md:grid-cols-2 gap-4">
-                        {/* Search */}
-                        <div className="relative">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                            <input
-                                type="text"
-                                placeholder="Search cases by name or keywords..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                            />
+            {/* Content */}
+            <div className="relative z-10 py-12">
+                <div className="container-custom">
+                    {/* Header */}
+                    <div className="text-center mb-12">
+                        <div className="flex justify-center mb-4">
+                            <Gavel className="w-16 h-16 text-primary-400" />
                         </div>
-
-                        {/* Year Filter */}
-                        <div className="relative">
-                            <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                            <select
-                                value={selectedYear}
-                                onChange={(e) => setSelectedYear(e.target.value)}
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none bg-white"
-                            >
-                                <option value="">All Years</option>
-                                {years.map((year) => (
-                                    <option key={year} value={year}>
-                                        {year}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        <h1 className="text-4xl font-display font-bold mb-4 text-white">Landmark Cases</h1>
+                        <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                            Explore landmark judgments that shaped Indian constitutional law
+                        </p>
                     </div>
 
-                    {/* Active Filters */}
-                    {(searchQuery || selectedYear) && (
-                        <div className="flex flex-wrap gap-2 mt-4">
-                            {searchQuery && (
-                                <span className="inline-flex items-center bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">
-                                    Search: {searchQuery}
-                                    <button onClick={() => setSearchQuery('')} className="ml-2">
-                                        <X className="w-4 h-4" />
-                                    </button>
-                                </span>
-                            )}
-                            {selectedYear && (
-                                <span className="inline-flex items-center bg-secondary-100 text-secondary-700 px-3 py-1 rounded-full text-sm">
-                                    Year: {selectedYear}
-                                    <button onClick={() => setSelectedYear('')} className="ml-2">
-                                        <X className="w-4 h-4" />
-                                    </button>
-                                </span>
-                            )}
+                    {/* Search and Filter */}
+                    <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 p-6 mb-8">
+                        <div className="grid md:grid-cols-2 gap-4">
+                            {/* Search */}
+                            <div className="relative">
+                                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                                <input
+                                    type="text"
+                                    placeholder="Search cases by name or keywords..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                />
+                            </div>
+
+                            {/* Year Filter */}
+                            <div className="relative">
+                                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                                <select
+                                    value={selectedYear}
+                                    onChange={(e) => setSelectedYear(e.target.value)}
+                                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none bg-white"
+                                >
+                                    <option value="">All Years</option>
+                                    {years.map((year) => (
+                                        <option key={year} value={year}>
+                                            {year}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* Active Filters */}
+                        {(searchQuery || selectedYear) && (
+                            <div className="flex flex-wrap gap-2 mt-4">
+                                {searchQuery && (
+                                    <span className="inline-flex items-center bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">
+                                        Search: {searchQuery}
+                                        <button onClick={() => setSearchQuery('')} className="ml-2">
+                                            <X className="w-4 h-4" />
+                                        </button>
+                                    </span>
+                                )}
+                                {selectedYear && (
+                                    <span className="inline-flex items-center bg-secondary-100 text-secondary-700 px-3 py-1 rounded-full text-sm">
+                                        Year: {selectedYear}
+                                        <button onClick={() => setSelectedYear('')} className="ml-2">
+                                            <X className="w-4 h-4" />
+                                        </button>
+                                    </span>
+                                )}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Results Count */}
+                    {cases && (
+                        <div className="mb-4 text-gray-200">
+                            Found <span className="font-semibold text-white">{cases.length}</span> landmark case{cases.length !== 1 && 's'}
+                        </div>
+                    )}
+
+                    {/* Cases Grid */}
+                    {isLoading ? (
+                        <div className="text-center py-12">
+                            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-400"></div>
+                            <p className="mt-4 text-gray-300">Loading cases...</p>
+                        </div>
+                    ) : cases && cases.length > 0 ? (
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {cases.map((caseItem) => (
+                                <CaseCard
+                                    key={caseItem.id}
+                                    caseData={caseItem}
+                                    onClick={() => setSelectedCase(caseItem)}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-12 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg">
+                            <Gavel className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                            <p className="text-gray-600">No cases found. Try adjusting your search or filters.</p>
                         </div>
                     )}
                 </div>
-
-                {/* Results Count */}
-                {cases && (
-                    <div className="mb-4 text-gray-600">
-                        Found <span className="font-semibold">{cases.length}</span> landmark case{cases.length !== 1 && 's'}
-                    </div>
-                )}
-
-                {/* Cases Grid */}
-                {isLoading ? (
-                    <div className="text-center py-12">
-                        <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
-                        <p className="mt-4 text-gray-600">Loading cases...</p>
-                    </div>
-                ) : cases && cases.length > 0 ? (
-                    <div className="grid md:grid-cols-2 gap-6">
-                        {cases.map((caseItem) => (
-                            <CaseCard
-                                key={caseItem.id}
-                                caseData={caseItem}
-                                onClick={() => setSelectedCase(caseItem)}
-                            />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-12 bg-white rounded-xl">
-                        <Gavel className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                        <p className="text-gray-600">No cases found. Try adjusting your search or filters.</p>
-                    </div>
-                )}
             </div>
 
             {/* Case Detail Modal */}
@@ -141,7 +154,7 @@ function CaseCard({ caseData, onClick }: { caseData: LandmarkCase; onClick: () =
     return (
         <div
             onClick={onClick}
-            className="card cursor-pointer group hover:scale-105 transition-transform duration-200"
+            className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-white/20"
         >
             <div className="flex items-start justify-between mb-3">
                 <div className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-semibold flex items-center">
@@ -150,13 +163,13 @@ function CaseCard({ caseData, onClick }: { caseData: LandmarkCase; onClick: () =
                 </div>
                 <Scale className="w-6 h-6 text-primary-600" />
             </div>
-            <h3 className="text-lg font-bold mb-3 group-hover:text-primary-600 transition-colors line-clamp-2">
+            <h3 className="text-lg font-bold mb-3 text-white transition-colors line-clamp-2">
                 {caseData.name}
             </h3>
-            <p className="text-sm text-gray-600 mb-4 line-clamp-3">{caseData.significance}</p>
+            <p className="text-sm text-gray-300 mb-4 line-clamp-3">{caseData.significance}</p>
             <div className="flex items-center justify-between text-xs">
-                <span className="text-gray-500">{caseData.key_points.length} Key Points</span>
-                <span className="text-primary-600 font-medium">Read more →</span>
+                <span className="text-gray-400">{caseData.key_points.length} Key Points</span>
+                <span className="text-primary-400 font-medium">Read more →</span>
             </div>
         </div>
     )

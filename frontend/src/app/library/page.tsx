@@ -55,7 +55,7 @@ export default function LibraryPage() {
                     </div>
 
                     {/* Search and Filter */}
-                    <div className="glass-card-light p-6 mb-8 fade-in-up">
+                    <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 p-6 mb-8">
                         <div className="grid md:grid-cols-2 gap-4">
                             {/* Search */}
                             <div className="relative">
@@ -135,7 +135,7 @@ export default function LibraryPage() {
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-12 glass-card-light">
+                        <div className="text-center py-12 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg">
                             <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                             <p className="text-gray-600">No articles found. Try adjusting your search or filters.</p>
                         </div>
@@ -155,7 +155,7 @@ function ArticleCard({ article, onClick }: { article: Article; onClick: () => vo
     return (
         <div
             onClick={onClick}
-            className="premium-card hover-lift cursor-pointer p-6 fade-in-up"
+            className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-lg p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-white/20"
         >
             <div className="flex items-start justify-between mb-3">
                 <div className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-semibold">
