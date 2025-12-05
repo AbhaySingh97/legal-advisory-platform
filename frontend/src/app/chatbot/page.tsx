@@ -96,9 +96,9 @@ export default function ChatbotPage() {
                 <img
                     src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=1920&q=80"
                     alt="Indian Constitution"
-                    className="w-full h-full object-cover opacity-40"
+                    className="w-full h-full object-cover opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/80 to-gray-900/90"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>
 
             <div className="container-custom max-w-5xl relative z-10 py-8">

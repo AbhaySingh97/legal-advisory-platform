@@ -31,13 +31,13 @@ export default function LibraryPage() {
     return (
         <div className="min-h-screen relative">
             {/* Background Image */}
-            <div className="fixed inset-0 z-0">
+            <div className="fixed inset-0 z-0 pointer-events-none">
                 <img
-                    src="/law-library.png"
+                    src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1920&q=80"
                     alt="Law Library"
-                    className="w-full h-full object-cover opacity-20"
+                    className="w-full h-full object-cover opacity-60"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>
 
             {/* Content */}

@@ -31,13 +31,14 @@ export default function CasesPage() {
     return (
         <div className="min-h-screen relative">
             {/* Background Image */}
-            <div className="fixed inset-0 z-0">
+            {/* Background Image */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
                 <img
                     src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
-                    alt="Courtroom"
-                    className="w-full h-full object-cover opacity-15"
+                    alt="Supreme Court"
+                    className="w-full h-full object-cover opacity-70"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/90 to-gray-900/95"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>
 
             {/* Content */}
