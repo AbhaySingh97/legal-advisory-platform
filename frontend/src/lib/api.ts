@@ -4,23 +4,19 @@ import type { Article, LandmarkCase, Procedure, QuickReply, ChatMessage, ChatRes
 const getBaseUrl = () => {
     let url = process.env.NEXT_PUBLIC_API_URL
 
-    // If no env var is set, or it's localhost but we're in the browser and not on localhost
     if (!url || url.includes('localhost')) {
         if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
-            // We are in production but using localhost URL or no URL - fallback to production backend
-            // TODO: Replace with your actual Render backend URL
             url = 'https://legal-advisory-backend-ycde.onrender.com'
         } else {
             url = url || 'http://localhost:8000'
         }
     }
 
-    // Remove trailing slash if present
     return url.endsWith('/') ? url.slice(0, -1) : url
 }
 
 const API_URL = getBaseUrl()
-const API_V1 = `${API_URL}/api/v1`
+const API_V1 = API_URL + '/api/v1'
 
 console.log('API Configuration:', {
     rawUrl: process.env.NEXT_PUBLIC_API_URL,
@@ -61,7 +57,7 @@ export const articlesAPI = {
     },
 
     getByNumber: async (articleNumber: string): Promise<Article> => {
-        const response = await api.get<Article>(`/articles/${articleNumber}`)
+        const response = await api.get<Article>('/articles/' + articleNumber)
         return response.data
     },
 
@@ -84,7 +80,7 @@ export const casesAPI = {
     },
 
     getById: async (caseId: number): Promise<LandmarkCase> => {
-        const response = await api.get<LandmarkCase>(`/cases/${caseId}`)
+        const response = await api.get<LandmarkCase>('/cases/' + caseId)
         return response.data
     },
 }
@@ -101,7 +97,7 @@ export const proceduresAPI = {
     },
 
     getById: async (procedureId: number): Promise<Procedure> => {
-        const response = await api.get<Procedure>(`/procedures/${procedureId}`)
+        const response = await api.get<Procedure>('/procedures/' + procedureId)
         return response.data
     },
 }
