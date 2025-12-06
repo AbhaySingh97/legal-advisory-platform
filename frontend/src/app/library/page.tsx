@@ -154,6 +154,8 @@ export default function LibraryPage() {
 }
 
 function ArticleCard({ article, onClick }: { article: Article; onClick: () => void }) {
+    const { t } = useLanguage()
+
     return (
         <div
             onClick={onClick}
