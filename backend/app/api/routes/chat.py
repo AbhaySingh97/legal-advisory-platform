@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
-from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import List
 
-from app.core.database import get_db
+from app.core.database import get_db, Database
 from app.schemas import ChatMessage, ChatResponse, QuickReplyResponse
 from app.services.chat_service import ChatService
 from app.models import QuickReply
@@ -13,14 +12,15 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 @router.post("", response_model=ChatResponse)
 async def chat(
     message: ChatMessage,
-    db: AsyncIOMotorDatabase = Depends(get_db)
+    db: Database = Depends(get_db)
 ):
     """
     Process a chat message and return a response.
     """
     try:
+        # ChatService now uses synchronous filtering on in-memory data
         chat_service = ChatService(db)
-        result = await chat_service.process_chat_message(message.message)
+        result = chat_service.process_chat_message(message.message)
         
         return ChatResponse(
             success=result['success'],
@@ -32,11 +32,10 @@ async def chat(
 
 
 @router.get("/quick-replies", response_model=List[QuickReplyResponse])
-async def get_quick_replies(db: AsyncIOMotorDatabase = Depends(get_db)):
+async def get_quick_replies(db: Database = Depends(get_db)):
     """
     Get quick reply suggestions.
     """
-    # MongoDB sort syntax: [("order", 1)]
-    cursor = db.quick_replies.find().sort("order", 1)
-    quick_replies = await cursor.to_list(length=100)
+    # Sort JSON list by order field
+    quick_replies = sorted(db.quick_replies, key=lambda x: x.get("order", 0))
     return quick_replies

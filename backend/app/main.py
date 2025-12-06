@@ -4,24 +4,21 @@ from app.core.config import settings
 from app.api.router import api_router
 
 from contextlib import asynccontextmanager
-from motor.motor_asyncio import AsyncIOMotorClient
-from app.core.database import db
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: Connect to MongoDB
-    import certifi
-    # Using tlsAllowInvalidCertificates=True to match the migration script stability
-    db.client = AsyncIOMotorClient(
-        settings.DATABASE_URL, 
-        tlsCAFile=certifi.where(),
-        tlsAllowInvalidCertificates=True
-    )
-    print(f"Connected to MongoDB at {settings.DATABASE_URL}")
+    # Startup: Load JSON Data
+    print(f"Starting {settings.PROJECT_NAME} with JSON storage...")
+    try:
+        from app.core.database import db
+        # Data is loaded automatically on import of db instance
+        print("✅ Data Service Ready")
+    except Exception as e:
+        print(f"❌ Error initializing data: {e}")
+    
     yield
-    # Shutdown: Close connection
-    db.client.close()
-    print("Closed MongoDB connection")
+    # Shutdown
+    print("Shutting down...")
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -48,14 +45,21 @@ async def root():
     return {
         "message": "Legal Advisory Platform API",
         "version": "1.0.0",
-        "docs": f"{settings.API_V1_PREFIX}/docs"
+        "docs": f"{settings.API_V1_PREFIX}/docs",
+        "storage": "JSON File System"
     }
 
 
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
-    return {"status": "healthy"}
+    from app.core.database import db
+    status = "healthy" if db.articles else "degraded"
+    return {
+        "status": status,
+        "articles_count": len(db.articles),
+        "cases_count": len(db.cases)
+    }
 
 
 # Include API router

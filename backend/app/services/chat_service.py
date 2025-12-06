@@ -1,16 +1,16 @@
 import re
 from typing import List, Dict, Optional
-from motor.motor_asyncio import AsyncIOMotorDatabase
+from app.core.database import Database
 from app.models import Article, LandmarkCase, Procedure
 from app.schemas import ArticleResponse
 
 class ChatService:
     """Service for handling chatbot logic."""
     
-    def __init__(self, db: AsyncIOMotorDatabase):
+    def __init__(self, db: Database):
         self.db = db
     
-    async def search_articles(self, query: str) -> List[Dict]:
+    def search_articles(self, query: str) -> List[Dict]:
         """
         Search for articles based on keywords or article number.
         Returns list of articles with relevance scores.
@@ -21,12 +21,8 @@ class ChatService:
         # Extract article number if present
         article_match = re.search(r'article\s*(\d+[a-z]?)', query_lower)
         
-        # Get all articles from database (using to_list instead of scalars().all())
-        # Assuming dataset is small enough. For larger, use query filters.
-        articles_data = await self.db.articles.find().to_list(length=None)
-        
-        # Convert dicts to Pydantic models to keep logic same (and helper methods if any exist).
-        # Actually, models are just data containers here.
+        # Get all articles from memory
+        articles_data = self.db.articles
         articles = [Article(**a) for a in articles_data]
         
         for article in articles:
@@ -144,15 +140,16 @@ Try asking "What is Article 32?" or "What is Article 226?"!"""
 
 Type your question and I'll help you find the relevant constitutional provision!"""
     
-    async def process_chat_message(self, message: str) -> Dict:
+    def process_chat_message(self, message: str) -> Dict:
         """
         Process a chat message and return appropriate response.
+        Sync processing since data is in memory.
         """
         query_lower = message.lower()
         
         # Check for procedure queries
         if any(word in query_lower for word in ['how to', 'procedure', 'process', 'file', 'filing']):
-            procedures_data = await self.db.procedures.find().to_list(length=None)
+            procedures_data = self.db.procedures
             procedures = [Procedure(**p) for p in procedures_data]
             
             for proc in procedures:
@@ -164,7 +161,7 @@ Type your question and I'll help you find the relevant constitutional provision!
         
         # Check for landmark case queries
         if any(word in query_lower for word in ['case', 'judgment', 'judgement', 'kesavananda', 'maneka', 'puttaswamy']):
-            cases_data = await self.db.landmark_cases.find().to_list(length=None)
+            cases_data = self.db.cases
             cases = [LandmarkCase(**c) for c in cases_data]
             
             for case in cases:
@@ -178,7 +175,7 @@ Type your question and I'll help you find the relevant constitutional provision!
                     return {'success': True, 'message': response}
         
         # Search for relevant articles
-        results = await self.search_articles(message)
+        results = self.search_articles(message)
         
         # If no results or low confidence, use smart fallback
         if not results or results[0]['score'] < 1.5:

@@ -7,9 +7,5 @@ services:
     plan: free
     region: singapore
     envVars:
-      - key: DATABASE_URL
-        sync: false
-      - key: DATABASE_NAME
-        value: legal_advisory_db
       - key: ENVIRONMENT
         value: production
