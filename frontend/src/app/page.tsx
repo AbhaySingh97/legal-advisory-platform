@@ -7,13 +7,27 @@ export default function HomePage() {
         <div className="min-h-screen relative">
             {/* Background Image for entire page */}
             <div className="fixed inset-0 z-0 pointer-events-none bg-black">
-                <Image
-                    src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
-                    alt="Background"
-                    fill
-                    className="object-cover object-center opacity-70"
-                    priority
-                />
+                {/* Desktop Image */}
+                <div className="hidden md:block absolute inset-0">
+                    <Image
+                        src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
+                        alt="Background Desktop"
+                        fill
+                        className="object-cover object-center opacity-70"
+                        priority
+                    />
+                </div>
+                {/* Mobile Image (Vertical) */}
+                <div className="block md:hidden absolute inset-0">
+                    <Image
+                        src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?q=80&w=800&auto=format&fit=crop"
+                        alt="Background Mobile"
+                        fill
+                        className="object-cover object-center opacity-70"
+                        priority
+                    />
+                </div>
+                {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>
 
