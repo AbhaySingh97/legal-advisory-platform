@@ -5,8 +5,10 @@ import { useQuery } from '@tanstack/react-query'
 import { articlesAPI } from '@/lib/api'
 import { Search, Filter, BookOpen, X } from 'lucide-react'
 import type { Article } from '@/types'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function LibraryPage() {
+    const { t } = useLanguage()
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedCategory, setSelectedCategory] = useState<string>('')
     const [selectedArticle, setSelectedArticle] = useState<Article | null>(null)
@@ -48,9 +50,9 @@ export default function LibraryPage() {
                         <div className="flex justify-center mb-4">
                             <BookOpen className="w-16 h-16 text-primary-400" />
                         </div>
-                        <h1 className="text-4xl font-display font-bold mb-4 text-white">Constitution Library</h1>
+                        <h1 className="text-4xl font-display font-bold mb-4 text-white">{t('library.title')}</h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                            Browse through the Indian Constitution articles with detailed descriptions and categorization
+                            {t('library.subtitle')}
                         </p>
                     </div>
 
@@ -62,7 +64,7 @@ export default function LibraryPage() {
                                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                                 <input
                                     type="text"
-                                    placeholder="Search articles by title, keywords, or description..."
+                                    placeholder={t('library.searchPlaceholder')}
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -77,7 +79,7 @@ export default function LibraryPage() {
                                     onChange={(e) => setSelectedCategory(e.target.value)}
                                     className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none"
                                 >
-                                    <option value="">All Categories</option>
+                                    <option value="">{t('library.allCategories')}</option>
                                     {categories?.map((category) => (
                                         <option key={category} value={category}>
                                             {category}
@@ -92,7 +94,7 @@ export default function LibraryPage() {
                             <div className="flex flex-wrap gap-2 mt-4">
                                 {searchQuery && (
                                     <span className="inline-flex items-center bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">
-                                        Search: {searchQuery}
+                                        {t('library.searchLabel')} {searchQuery}
                                         <button onClick={() => setSearchQuery('')} className="ml-2">
                                             <X className="w-4 h-4" />
                                         </button>
@@ -100,7 +102,7 @@ export default function LibraryPage() {
                                 )}
                                 {selectedCategory && (
                                     <span className="inline-flex items-center bg-secondary-100 text-secondary-700 px-3 py-1 rounded-full text-sm">
-                                        Category: {selectedCategory}
+                                        {t('library.categoryLabel')} {selectedCategory}
                                         <button onClick={() => setSelectedCategory('')} className="ml-2">
                                             <X className="w-4 h-4" />
                                         </button>
@@ -113,7 +115,7 @@ export default function LibraryPage() {
                     {/* Results Count */}
                     {articles && (
                         <div className="mb-4 text-gray-200">
-                            Found <span className="font-semibold text-white">{articles.length}</span> article{articles.length !== 1 && 's'}
+                            {t('library.found')} <span className="font-semibold text-white">{articles.length}</span> {articles.length === 1 ? t('library.article') : t('library.articles')}
                         </div>
                     )}
 
@@ -121,7 +123,7 @@ export default function LibraryPage() {
                     {isLoading ? (
                         <div className="text-center py-12">
                             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-400"></div>
-                            <p className="mt-4 text-gray-300">Loading articles...</p>
+                            <p className="mt-4 text-gray-300">{t('common.loading')}</p>
                         </div>
                     ) : articles && articles.length > 0 ? (
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -137,7 +139,7 @@ export default function LibraryPage() {
                     ) : (
                         <div className="text-center py-12 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-lg">
                             <BookOpen className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-                            <p className="text-gray-600 dark:text-gray-300">No articles found. Try adjusting your search or filters.</p>
+                            <p className="text-gray-600 dark:text-gray-300">{t('library.noResults')}</p>
                         </div>
                     )}
                 </div>
@@ -168,7 +170,7 @@ function ArticleCard({ article, onClick }: { article: Article; onClick: () => vo
             <p className="text-sm text-gray-300 mb-3 line-clamp-3">{article.description}</p>
             <div className="flex items-center justify-between text-xs">
                 <span className="text-gray-400">{article.category}</span>
-                <span className="text-primary-400 font-medium">Read more →</span>
+                <span className="text-primary-400 font-medium">{t('library.readMore')}</span>
             </div>
         </div>
     )
