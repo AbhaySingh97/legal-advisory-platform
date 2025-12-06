@@ -10,7 +10,8 @@ from app.core.database import db
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup: Connect to MongoDB
-    db.client = AsyncIOMotorClient(settings.DATABASE_URL)
+    import certifi
+    db.client = AsyncIOMotorClient(settings.DATABASE_URL, tlsCAFile=certifi.where())
     print(f"Connected to MongoDB at {settings.DATABASE_URL}")
     yield
     # Shutdown: Close connection

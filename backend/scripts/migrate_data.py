@@ -23,7 +23,8 @@ async def migrate_data(clear_existing=False):
     """Migrate data from JSON to MongoDB."""
     
     print(f"Connecting to MongoDB: {settings.DATABASE_URL}")
-    client = AsyncIOMotorClient(settings.DATABASE_URL)
+    import certifi
+    client = AsyncIOMotorClient(settings.DATABASE_URL, tlsCAFile=certifi.where())
     db = client[settings.DATABASE_NAME]
     
     try:
