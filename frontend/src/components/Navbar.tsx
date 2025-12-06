@@ -37,8 +37,8 @@ export default function Navbar() {
                                 <ArrowLeft className="w-6 h-6" />
                             </button>
                         )}
-                        <Link href="/" className="flex items-center space-x-2 font-display font-bold text-xl text-primary-400 dark:text-primary-300">
-                            <Scale className="w-8 h-8" />
+                        <Link href="/" className="flex items-center space-x-2 font-display font-bold text-xl text-amber-400 hover:text-amber-300 transition-colors">
+                            <Scale className="w-8 h-8" strokeWidth={2} />
                             <span className="hidden sm:inline">Legal Advisory</span>
                         </Link>
                     </div>
