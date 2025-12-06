@@ -4,7 +4,6 @@ import '@/styles/globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Providers from '@/components/Providers'
-import { ThemeProvider } from '@/contexts/ThemeContext'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
@@ -23,17 +22,15 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
             <body className="font-sans antialiased">
-                <ThemeProvider>
-                    <Providers>
-                        <div className="flex flex-col min-h-screen">
-                            <Navbar />
-                            <main className="flex-grow">
-                                {children}
-                            </main>
-                            <Footer />
-                        </div>
-                    </Providers>
-                </ThemeProvider>
+                <Providers>
+                    <div className="flex flex-col min-h-screen">
+                        <Navbar />
+                        <main className="flex-grow">
+                            {children}
+                        </main>
+                        <Footer />
+                    </div>
+                </Providers>
             </body>
         </html>
     )
