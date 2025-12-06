@@ -1,14 +1,6 @@
-import axios from 'axios'
-return url.endsWith('/') ? url.slice(0, -1) : url
-}
-
-const API_URL = getBaseUrl()
-const API_V1 = `${API_URL}/api/v1`
-
-console.log('API Configuration:', {
-    rawUrl: process.env.NEXT_PUBLIC_API_URL,
+rawUrl: process.env.NEXT_PUBLIC_API_URL,
     sanitizedUrl: API_URL,
-    apiUrl: API_V1
+        apiUrl: API_V1
 })
 
 const api = axios.create({
