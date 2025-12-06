@@ -77,7 +77,16 @@ def migrate_data(clear_existing: bool = False):
 
     print(f"Migrating {len(quick_replies)} quick replies...")
     if quick_replies:
-        db.quick_replies.insert_many(quick_replies)
+        # Convert strings to objects if necessary
+        formatted_replies = []
+        for r in quick_replies:
+            if isinstance(r, str):
+                formatted_replies.append({"text": r})
+            elif isinstance(r, dict):
+                formatted_replies.append(r)
+        
+        if formatted_replies:
+            db.quick_replies.insert_many(formatted_replies)
 
     # 5. Cleanup
     client.close()
