@@ -12,6 +12,7 @@ export interface LandmarkCase {
     name: string
     year: number
     significance: string
+    detailed_explanation?: string
     key_points: string[]
     keywords: string[]
 }

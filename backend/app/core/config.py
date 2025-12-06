@@ -6,8 +6,9 @@ from typing import List
 class Settings(BaseSettings):
     """Application settings."""
     
-    # Database - Using SQLite for local development (easier setup)
-    DATABASE_URL: str = "sqlite+aiosqlite:///./legal_db.sqlite"
+    # Database - Using MongoDB
+    DATABASE_URL: str = "mongodb://localhost:27017"
+    DATABASE_NAME: str = "legal_advisory_db"
     
     # Redis
     REDIS_URL: str = "redis://localhost:6379"
@@ -38,11 +39,9 @@ class Settings(BaseSettings):
     
     @validator("DATABASE_URL", pre=True)
     def assemble_db_connection(cls, v: str | None, values: dict[str, any]) -> str:
-        if isinstance(v, str):
-            if v.startswith("postgres://"):
-                return v.replace("postgres://", "postgresql+asyncpg://", 1)
-            if v.startswith("postgresql://"):
-                return v.replace("postgresql://", "postgresql+asyncpg://", 1)
+        # In production, this comes from env vars
+        if not v:
+            return "mongodb://localhost:27017" # Default fallback for local
         return v
 
     class Config:

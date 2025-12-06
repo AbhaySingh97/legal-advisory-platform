@@ -1,7 +1,5 @@
 from fastapi import APIRouter, Depends, Query, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
-from sqlalchemy import or_
+from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import List, Optional
 
 from app.core.database import get_db
@@ -17,43 +15,45 @@ async def get_cases(
     limit: int = Query(50, ge=1, le=100),
     year: Optional[int] = None,
     search: Optional[str] = None,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncIOMotorDatabase = Depends(get_db)
 ):
     """
     Get all landmark cases with optional filtering and pagination.
     """
-    query = select(LandmarkCase)
+    query = {}
     
     # Filter by year
     if year:
-        query = query.filter(LandmarkCase.year == year)
+        query["year"] = year
     
     # Search by keyword in name or significance
     if search:
-        search_term = f"%{search}%"
-        query = query.filter(
-            or_(
-                LandmarkCase.name.ilike(search_term),
-                LandmarkCase.significance.ilike(search_term)
-            )
-        )
+        query["$or"] = [
+            {"name": {"$regex": search, "$options": "i"}},
+            {"significance": {"$regex": search, "$options": "i"}}
+        ]
     
-    query = query.offset(skip).limit(limit)
-    result = await db.execute(query)
-    cases = result.scalars().all()
+    cursor = db.landmark_cases.find(query).skip(skip).limit(limit)
+    cases = await cursor.to_list(length=limit)
     return cases
 
 
 @router.get("/{case_id}", response_model=LandmarkCaseResponse)
 async def get_case(
-    case_id: int,
-    db: AsyncSession = Depends(get_db)
+    case_id: str,
+    db: AsyncIOMotorDatabase = Depends(get_db)
 ):
     """
     Get a specific landmark case by ID.
+    NOTE: ID is now a string (ObjectId).
     """
-    result = await db.execute(select(LandmarkCase).filter(LandmarkCase.id == case_id))
-    case = result.scalars().first()
+    from bson import ObjectId
+    try:
+        oid = ObjectId(case_id)
+    except:
+        raise HTTPException(status_code=400, detail="Invalid ID format")
+
+    case = await db.landmark_cases.find_one({"_id": oid})
     
     if not case:
         raise HTTPException(status_code=404, detail="Case not found")

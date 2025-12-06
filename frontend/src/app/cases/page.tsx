@@ -211,6 +211,18 @@ function CaseModal({ caseData, onClose }: { caseData: LandmarkCase; onClose: () 
                         <p className="text-gray-800 leading-relaxed whitespace-pre-line">{caseData.significance}</p>
                     </div>
 
+                    {caseData.detailed_explanation && (
+                        <div className="mb-6">
+                            <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3 flex items-center">
+                                <Gavel className="w-4 h-4 mr-2" />
+                                Detailed Explanation
+                            </h3>
+                            <div className="bg-gray-50 rounded-lg p-4 text-gray-800 leading-relaxed whitespace-pre-line text-justify text-sm md:text-base border border-gray-100">
+                                {caseData.detailed_explanation}
+                            </div>
+                        </div>
+                    )}
+
                     <div className="mb-6">
                         <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3">Key Points</h3>
                         <ul className="space-y-3">

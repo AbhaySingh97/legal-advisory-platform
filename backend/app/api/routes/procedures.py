@@ -1,7 +1,5 @@
 from fastapi import APIRouter, Depends, Query, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
-from sqlalchemy import or_
+from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import List, Optional
 
 from app.core.database import get_db
@@ -16,39 +14,41 @@ async def get_procedures(
     skip: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=100),
     search: Optional[str] = None,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncIOMotorDatabase = Depends(get_db)
 ):
     """
     Get all legal procedures with optional filtering and pagination.
     """
-    query = select(Procedure)
+    query = {}
     
     # Search by keyword in name or description
     if search:
-        search_term = f"%{search}%"
-        query = query.filter(
-            or_(
-                Procedure.name.ilike(search_term),
-                Procedure.description.ilike(search_term)
-            )
-        )
+        query["$or"] = [
+            {"name": {"$regex": search, "$options": "i"}},
+            {"description": {"$regex": search, "$options": "i"}}
+        ]
     
-    query = query.offset(skip).limit(limit)
-    result = await db.execute(query)
-    procedures = result.scalars().all()
+    cursor = db.procedures.find(query).skip(skip).limit(limit)
+    procedures = await cursor.to_list(length=limit)
     return procedures
 
 
 @router.get("/{procedure_id}", response_model=ProcedureResponse)
 async def get_procedure(
-    procedure_id: int,
-    db: AsyncSession = Depends(get_db)
+    procedure_id: str,
+    db: AsyncIOMotorDatabase = Depends(get_db)
 ):
     """
     Get a specific legal procedure by ID.
+    NOTE: ID is now a string (ObjectId).
     """
-    result = await db.execute(select(Procedure).filter(Procedure.id == procedure_id))
-    procedure = result.scalars().first()
+    from bson import ObjectId
+    try:
+        oid = ObjectId(procedure_id)
+    except:
+        raise HTTPException(status_code=400, detail="Invalid ID format")
+
+    procedure = await db.procedures.find_one({"_id": oid})
     
     if not procedure:
         raise HTTPException(status_code=404, detail="Procedure not found")

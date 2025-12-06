@@ -1,6 +1,16 @@
-from pydantic import BaseModel, Field
-from typing import List, Optional
+from pydantic import BaseModel, Field, BeforeValidator, ConfigDict
+from typing import List, Optional, Annotated
 
+# Helper for ObjectId
+PyObjectId = Annotated[str, BeforeValidator(str)]
+
+class MongoBaseModel(BaseModel):
+    id: Optional[PyObjectId] = Field(alias="_id", default=None)
+    
+    model_config = ConfigDict(
+        populate_by_name=True,
+        arbitrary_types_allowed=True,
+    )
 
 # Article Schemas
 class ArticleBase(BaseModel):
@@ -11,18 +21,13 @@ class ArticleBase(BaseModel):
     category: str
     keywords: List[str]
 
-
 class ArticleCreate(ArticleBase):
     """Schema for creating an article."""
     pass
 
-
-class ArticleResponse(ArticleBase):
+class ArticleResponse(ArticleBase, MongoBaseModel):
     """Schema for article response."""
-    id: int
-    
-    class Config:
-        from_attributes = True
+    pass
 
 
 # Landmark Case Schemas
@@ -31,21 +36,17 @@ class LandmarkCaseBase(BaseModel):
     name: str
     year: int
     significance: str
+    detailed_explanation: Optional[str] = None
     key_points: List[str]
     keywords: List[str]
-
 
 class LandmarkCaseCreate(LandmarkCaseBase):
     """Schema for creating a landmark case."""
     pass
 
-
-class LandmarkCaseResponse(LandmarkCaseBase):
+class LandmarkCaseResponse(LandmarkCaseBase, MongoBaseModel):
     """Schema for landmark case response."""
-    id: int
-    
-    class Config:
-        from_attributes = True
+    pass
 
 
 # Procedure Schemas
@@ -56,46 +57,35 @@ class ProcedureBase(BaseModel):
     procedure: str
     keywords: List[str]
 
-
 class ProcedureCreate(ProcedureBase):
     """Schema for creating a procedure."""
     pass
 
-
-class ProcedureResponse(ProcedureBase):
+class ProcedureResponse(ProcedureBase, MongoBaseModel):
     """Schema for procedure response."""
-    id: int
-    
-    class Config:
-        from_attributes = True
+    pass
 
 
 # Quick Reply Schemas
 class QuickReplyBase(BaseModel):
     """Base Quick Reply schema."""
     text: str
-    category: Optional[str] = None
+    category: Optional[str] = "General"
     order: int = 0
-
 
 class QuickReplyCreate(QuickReplyBase):
     """Schema for creating a quick reply."""
     pass
 
-
-class QuickReplyResponse(QuickReplyBase):
+class QuickReplyResponse(QuickReplyBase, MongoBaseModel):
     """Schema for quick reply response."""
-    id: int
-    
-    class Config:
-        from_attributes = True
+    pass
 
 
 # Chat Schemas
 class ChatMessage(BaseModel):
     """Schema for chat message."""
     message: str = Field(..., min_length=1, max_length=1000)
-
 
 class ChatResponse(BaseModel):
     """Schema for chat response."""

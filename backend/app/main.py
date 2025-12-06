@@ -3,12 +3,27 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.api.router import api_router
 
+from contextlib import asynccontextmanager
+from motor.motor_asyncio import AsyncIOMotorClient
+from app.core.database import db
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: Connect to MongoDB
+    db.client = AsyncIOMotorClient(settings.DATABASE_URL)
+    print(f"Connected to MongoDB at {settings.DATABASE_URL}")
+    yield
+    # Shutdown: Close connection
+    db.client.close()
+    print("Closed MongoDB connection")
+
 # Initialize FastAPI app
 app = FastAPI(
     title=settings.PROJECT_NAME,
     openapi_url=f"{settings.API_V1_PREFIX}/openapi.json",
     docs_url=f"{settings.API_V1_PREFIX}/docs",
-    redoc_url=f"{settings.API_V1_PREFIX}/redoc"
+    redoc_url=f"{settings.API_V1_PREFIX}/redoc",
+    lifespan=lifespan
 )
 
 # Configure CORS

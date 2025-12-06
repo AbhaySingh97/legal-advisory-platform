@@ -1,54 +1,17 @@
 """
-Data migration script to load constitution data into SQLite database.
+Data migration script to load constitution data into MongoDB.
 """
 import json
-import os
 import sys
+import asyncio
 from pathlib import Path
+from motor.motor_asyncio import AsyncIOMotorClient
 
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from sqlalchemy import create_engine, Column, Integer, String, Text, JSON
-from sqlalchemy.orm import sessionmaker, declarative_base
-
-# Create Base here to avoid async engine issues
-Base = declarative_base()
-
-# Define models directly here for migration
-class Article(Base):
-    __tablename__ = "articles"
-    id = Column(Integer, primary_key=True, index=True)
-    number = Column(String(10), unique=True, index=True, nullable=False)
-    title = Column(String(500), nullable=False)
-    description = Column(Text, nullable=False)
-    category = Column(String(200), index=True, nullable=False)
-    keywords = Column(JSON, nullable=False)
-
-class LandmarkCase(Base):
-    __tablename__ = "landmark_cases"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(500), nullable=False)
-    year = Column(Integer, index=True, nullable=False)
-    significance = Column(Text, nullable=False)
-    key_points = Column(JSON, nullable=False)
-    keywords = Column(JSON, nullable=False)
-
-class Procedure(Base):
-    __tablename__ = "procedures"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(500), nullable=False)
-    description = Column(Text, nullable=False)
-    procedure = Column(Text, nullable=False)
-    keywords = Column(JSON, nullable=False)
-
-class QuickReply(Base):
-    __tablename__ = "quick_replies"
-    id = Column(Integer, primary_key=True, index=True)
-    text = Column(String(500), nullable=False)
-    category = Column(String(100))
-    order = Column(Integer, default=0)
-
+from app.core.config import settings
+from app.models.legal import Article, LandmarkCase, Procedure, QuickReply
 
 def load_json_data():
     """Load data from JSON file."""
@@ -56,120 +19,103 @@ def load_json_data():
     with open(data_file, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-
-from app.core.config import settings
-
-def migrate_data(clear_existing=False):
-    """Migrate data from JSON to database."""
+async def migrate_data(clear_existing=False):
+    """Migrate data from JSON to MongoDB."""
     
-    # Get database URL from settings
-    db_url = settings.DATABASE_URL
-    
-    # Convert async URL to sync URL for migration script
-    # Remove async drivers: +asyncpg for PostgreSQL, +aiosqlite for SQLite
-    if "+asyncpg" in db_url:
-        db_url = db_url.replace("+asyncpg", "")
-    if "+aiosqlite" in db_url:
-        db_url = db_url.replace("+aiosqlite", "")
-    
-    print(f"Connecting to database: {db_url.split('@')[-1] if '@' in db_url else db_url}")
-    
-    # Create synchronous engine for migration
-    engine = create_engine(db_url, echo=True)
-    
-    # Create tables
-    print("Creating database tables...")
-    Base.metadata.create_all(engine)
-    
-    # Create session
-    SessionLocal = sessionmaker(bind=engine)
-    db = SessionLocal()
+    print(f"Connecting to MongoDB: {settings.DATABASE_URL}")
+    client = AsyncIOMotorClient(settings.DATABASE_URL)
+    db = client[settings.DATABASE_NAME]
     
     try:
-        # Clear existing data if requested
-        if clear_existing:
-            print("Clearing existing data...")
-            db.query(QuickReply).delete()
-            db.query(Procedure).delete()
-            db.query(LandmarkCase).delete()
-            db.query(Article).delete()
-            db.commit()
-        
         # Load JSON data
         print("Loading JSON data...")
         data = load_json_data()
         
+        # Collections
+        articles_coll = db.articles
+        cases_coll = db.landmark_cases
+        procedures_coll = db.procedures
+        quick_replies_coll = db.quick_replies
+        
+        # Clear existing data if requested
+        if clear_existing:
+            print("Clearing existing data...")
+            await articles_coll.delete_many({})
+            await cases_coll.delete_many({})
+            await procedures_coll.delete_many({})
+            await quick_replies_coll.delete_many({})
+        
         # Migrate Articles
-        print(f"Migrating {len(data['articles'])} articles...")
-        for article_data in data['articles']:
-            article = Article(
-                number=article_data['number'],
-                title=article_data['title'],
-                description=article_data['description'],
-                category=article_data['category'],
-                keywords=article_data['keywords']
-            )
-            db.add(article)
+        if 'articles' in data:
+            print(f"Migrating {len(data['articles'])} articles...")
+            articles = []
+            for item in data['articles']:
+                # validate with model
+                article = Article(**item)
+                # dump to dict, exclude id so mongo generates it
+                articles.append(article.model_dump(by_alias=True, exclude={"id"}))
+            
+            if articles:
+                await articles_coll.insert_many(articles)
         
         # Migrate Landmark Cases
         if 'landmark_cases' in data:
             print(f"Migrating {len(data['landmark_cases'])} landmark cases...")
-            for case_data in data['landmark_cases']:
-                case = LandmarkCase(
-                    name=case_data['name'],
-                    year=int(case_data['year']),  # Convert string to int
-                    significance=case_data['significance'],
-                    key_points=case_data['key_points'],
-                    keywords=case_data['keywords']
-                )
-                db.add(case)
+            cases = []
+            for item in data['landmark_cases']:
+                # Convert year to int if string (as in original script)
+                if isinstance(item.get('year'), str):
+                     item['year'] = int(item['year'])
+                
+                case = LandmarkCase(**item)
+                cases.append(case.model_dump(by_alias=True, exclude={"id"}))
+            
+            if cases:
+                await cases_coll.insert_many(cases)
         
         # Migrate Procedures
         if 'procedures' in data:
             print(f"Migrating {len(data['procedures'])} procedures...")
-            for proc_data in data['procedures']:
-                procedure = Procedure(
-                    name=proc_data['name'],
-                    description=proc_data['description'],
-                    procedure=proc_data['procedure'],
-                    keywords=proc_data['keywords']
-                )
-                db.add(procedure)
+            procedures = []
+            for item in data['procedures']:
+                proc = Procedure(**item)
+                procedures.append(proc.model_dump(by_alias=True, exclude={"id"}))
+            
+            if procedures:
+                await procedures_coll.insert_many(procedures)
         
         # Migrate Quick Replies
         if 'quick_replies' in data:
             print(f"Migrating {len(data['quick_replies'])} quick replies...")
+            replies = []
             for idx, reply_text in enumerate(data['quick_replies']):
-                quick_reply = QuickReply(
-                    text=reply_text,  # reply_text is already a string
+                reply = QuickReply(
+                    text=reply_text,
                     category="General",
                     order=idx
                 )
-                db.add(quick_reply)
-        
-        # Commit all changes
-        print("Committing changes...")
-        db.commit()
+                replies.append(reply.model_dump(by_alias=True, exclude={"id"}))
+            
+            if replies:
+                await quick_replies_coll.insert_many(replies)
         
         print("\nMigration completed successfully!")
-        print(f"   - Articles: {db.query(Article).count()}")
-        print(f"   - Landmark Cases: {db.query(LandmarkCase).count()}")
-        print(f"   - Procedures: {db.query(Procedure).count()}")
-        print(f"   - Quick Replies: {db.query(QuickReply).count()}")
+        print(f"   - Articles: {await articles_coll.count_documents({})}")
+        print(f"   - Landmark Cases: {await cases_coll.count_documents({})}")
+        print(f"   - Procedures: {await procedures_coll.count_documents({})}")
+        print(f"   - Quick Replies: {await quick_replies_coll.count_documents({})}")
         
     except Exception as e:
         print(f"\nError during migration: {e}")
-        db.rollback()
         raise
     finally:
-        db.close()
-
+        client.close()
 
 if __name__ == "__main__":
     import argparse
     
-    parser = argparse.ArgumentParser(description="Migrate constitution data to database")
+    parser = argparse.ArgumentParser(description="Migrate constitution data to MongoDB")
     parser.add_argument("--clear", action="store_true", help="Clear existing data before migration")
     args = parser.parse_args()
     
-    migrate_data(clear_existing=args.clear)
+    asyncio.run(migrate_data(clear_existing=args.clear))

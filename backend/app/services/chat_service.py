@@ -1,15 +1,13 @@
 import re
 from typing import List, Dict, Optional
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
+from motor.motor_asyncio import AsyncIOMotorDatabase
 from app.models import Article, LandmarkCase, Procedure
 from app.schemas import ArticleResponse
-
 
 class ChatService:
     """Service for handling chatbot logic."""
     
-    def __init__(self, db: AsyncSession):
+    def __init__(self, db: AsyncIOMotorDatabase):
         self.db = db
     
     async def search_articles(self, query: str) -> List[Dict]:
@@ -23,9 +21,13 @@ class ChatService:
         # Extract article number if present
         article_match = re.search(r'article\s*(\d+[a-z]?)', query_lower)
         
-        # Get all articles from database
-        result = await self.db.execute(select(Article))
-        articles = result.scalars().all()
+        # Get all articles from database (using to_list instead of scalars().all())
+        # Assuming dataset is small enough. For larger, use query filters.
+        articles_data = await self.db.articles.find().to_list(length=None)
+        
+        # Convert dicts to Pydantic models to keep logic same (and helper methods if any exist).
+        # Actually, models are just data containers here.
+        articles = [Article(**a) for a in articles_data]
         
         for article in articles:
             score = 0
@@ -78,7 +80,7 @@ class ChatService:
         
         # Detect query intent
         if any(word in query_lower for word in ['right', 'freedom', 'equality', 'liberty']):
-            return """I don't have specific information about that query, but here are related constitutional topics:
+            return \"\"\"I don't have specific information about that query, but here are related constitutional topics:
 
 **Fundamental Rights (Part III):**
 • Right to Equality (Articles 14-18)
@@ -88,10 +90,10 @@ class ChatService:
 • Cultural and Educational Rights (Articles 29-30)
 • Right to Constitutional Remedies (Article 32)
 
-Try asking about a specific article number or right!"""
+Try asking about a specific article number or right!\"\"\"
         
         elif any(word in query_lower for word in ['duty', 'duties', 'responsibility']):
-            return """**Fundamental Duties (Article 51A):**
+            return \"\"\"**Fundamental Duties (Article 51A):**
 Every citizen has duties including:
 • Respect the Constitution, National Flag & Anthem
 • Uphold sovereignty and integrity of India
@@ -99,19 +101,19 @@ Every citizen has duties including:
 • Develop scientific temper
 • Safeguard public property
 
-Ask "What is Article 51A?" for complete details!"""
+Ask "What is Article 51A?" for complete details!\"\"\"
         
         elif any(word in query_lower for word in ['president', 'governor', 'executive', 'prime minister', 'minister']):
-            return """**Union Executive (Part V):**
+            return \"\"\"**Union Executive (Part V):**
 • President of India (Articles 52-62)
 • Vice-President (Articles 63-73)
 • Council of Ministers (Articles 74-75)
 • Attorney-General (Article 76)
 
-Try asking about a specific article!"""
+Try asking about a specific article!\"\"\"
         
         elif any(word in query_lower for word in ['parliament', 'lok sabha', 'rajya sabha', 'legislature']):
-            return """**Parliament (Part V):**
+            return \"\"\"**Parliament (Part V):**
 • Constitution of Parliament (Article 79)
 • Lok Sabha - House of the People (Article 81)
 • Rajya Sabha - Council of States (Article 80)
@@ -119,19 +121,19 @@ Try asking about a specific article!"""
 • Budget (Article 112)
 • Ordinances (Article 123)
 
-Ask about specific articles for detailed information!"""
+Ask about specific articles for detailed information!\"\"\"
         
         elif any(word in query_lower for word in ['court', 'judge', 'judiciary', 'justice', 'supreme court', 'high court']):
-            return """**Judiciary:**
+            return \"\"\"**Judiciary:**
 • Supreme Court (Articles 124-147)
 • High Courts (Articles 214-231)
 • Writs (Articles 32, 226)
 • Judicial Review (Article 13)
 
-Try asking "What is Article 32?" or "What is Article 226?"!"""
+Try asking "What is Article 32?" or "What is Article 226?"!\"\"\"
         
         else:
-            return """I couldn't find specific information about that query. 
+            return \"\"\"I couldn't find specific information about that query. 
 
 **Try asking about:**
 • Specific article numbers (e.g., "What is Article 21?")
@@ -140,7 +142,7 @@ Try asking "What is Article 32?" or "What is Article 226?"!"""
 • Legal procedures (e.g., "How to file PIL?")
 • Landmark cases (e.g., "Kesavananda Bharati case")
 
-Type your question and I'll help you find the relevant constitutional provision!"""
+Type your question and I'll help you find the relevant constitutional provision!\"\"\"
     
     async def process_chat_message(self, message: str) -> Dict:
         """
@@ -150,8 +152,9 @@ Type your question and I'll help you find the relevant constitutional provision!
         
         # Check for procedure queries
         if any(word in query_lower for word in ['how to', 'procedure', 'process', 'file', 'filing']):
-            result = await self.db.execute(select(Procedure))
-            procedures = result.scalars().all()
+            procedures_data = await self.db.procedures.find().to_list(length=None)
+            procedures = [Procedure(**p) for p in procedures_data]
+            
             for proc in procedures:
                 if any(kw in query_lower for kw in proc.keywords):
                     response = f"📋 **{proc.name}**\n\n"
@@ -161,8 +164,9 @@ Type your question and I'll help you find the relevant constitutional provision!
         
         # Check for landmark case queries
         if any(word in query_lower for word in ['case', 'judgment', 'judgement', 'kesavananda', 'maneka', 'puttaswamy']):
-            result = await self.db.execute(select(LandmarkCase))
-            cases = result.scalars().all()
+            cases_data = await self.db.landmark_cases.find().to_list(length=None)
+            cases = [LandmarkCase(**c) for c in cases_data]
+            
             for case in cases:
                 if any(kw in query_lower for kw in case.keywords) or case.name.lower() in query_lower:
                     response = f"⚖️ **{case.name}**\n\n"
@@ -187,6 +191,7 @@ Type your question and I'll help you find the relevant constitutional provision!
         best_match = results[0]['article']
         response = f"📜 **Article {best_match.number}: {best_match.title}**\n\n"
         response += f"**Category:** {best_match.category}\n\n"
+        # Accessing description correctly
         response += f"**Description:**\n{best_match.description}\n\n"
         
         related_articles = []

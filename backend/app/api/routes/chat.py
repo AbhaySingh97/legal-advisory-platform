@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
+from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import List
 
 from app.core.database import get_db
@@ -14,7 +13,7 @@ router = APIRouter(prefix="/chat", tags=["chat"])
 @router.post("", response_model=ChatResponse)
 async def chat(
     message: ChatMessage,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncIOMotorDatabase = Depends(get_db)
 ):
     """
     Process a chat message and return a response.
@@ -33,10 +32,11 @@ async def chat(
 
 
 @router.get("/quick-replies", response_model=List[QuickReplyResponse])
-async def get_quick_replies(db: AsyncSession = Depends(get_db)):
+async def get_quick_replies(db: AsyncIOMotorDatabase = Depends(get_db)):
     """
     Get quick reply suggestions.
     """
-    result = await db.execute(select(QuickReply).order_by(QuickReply.order))
-    quick_replies = result.scalars().all()
+    # MongoDB sort syntax: [("order", 1)]
+    cursor = db.quick_replies.find().sort("order", 1)
+    quick_replies = await cursor.to_list(length=100)
     return quick_replies
