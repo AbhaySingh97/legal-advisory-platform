@@ -1785,6 +1785,134 @@
         "death"
       ],
       "category": "Civil Law"
+    },
+    {
+      "name": "Applying for a Passport",
+      "description": "Step-by-step process to obtain an Indian passport for international travel.",
+      "procedure": "1. Register on the Passport Seva Portal (passportindia.gov.in).\n2. Fill the online application form and pay the fee (₹1,500 for normal, ₹3,500 for Tatkaal).\n3. Book an appointment at the nearest Passport Seva Kendra (PSK).\n4. Visit PSK with original documents: Proof of Address, Date of Birth, and Identity.\n5. Biometric data (photo, fingerprints) will be collected.\n6. Police verification (post or pre-verification based on category).\n7. Passport dispatched to your address within 30-45 days (7 days for Tatkaal).",
+      "keywords": [
+        "passport",
+        "travel",
+        "PSK",
+        "identity",
+        "visa"
+      ],
+      "category": "Government Services"
+    },
+    {
+      "name": "Aadhaar Card Correction/Update",
+      "description": "Procedure to update name, address, DOB, or mobile number in Aadhaar card.",
+      "procedure": "1. Visit UIDAI website (uidai.gov.in) or myAadhaar portal.\n2. Select 'Update Aadhaar' and choose what to update (Demographic/Biometric).\n3. Book an appointment at Aadhaar Enrollment Center or use online update (for address/mobile).\n4. For online: Upload supporting documents and pay ₹50.\n5. For center visit: Carry original documents and Aadhaar card.\n6. Receive Update Request Number (URN).\n7. Track status online. Updated e-Aadhaar available for download in 7-10 days.",
+      "keywords": [
+        "aadhaar",
+        "update",
+        "correction",
+        "UIDAI",
+        "identity"
+      ],
+      "category": "Government Services"
+    },
+    {
+      "name": "Applying for PAN Card",
+      "description": "Permanent Account Number (PAN) is mandatory for income tax filing and financial transactions.",
+      "procedure": "1. Visit NSDL (tin.tin.nsdl.com) or UTIITSL website.\n2. Fill Form 49A (Indian citizens) online.\n3. Upload photo, signature, and identity/address proof.\n4. Pay application fee (₹110 for Indian address, ₹1,020 for foreign).\n5. Submit acknowledgement and documents at nearest PAN center (or e-sign if applied digitally).\n6. PAN card dispatched to registered address within 15-20 days.\n7. Download e-PAN immediately after application (if Aadhaar-based).",
+      "keywords": [
+        "PAN card",
+        "income tax",
+        "permanent account number",
+        "tax filing"
+      ],
+      "category": "Government Services"
+    },
+    {
+      "name": "Voter ID Card Registration",
+      "description": "Electoral Photo Identity Card (EPIC) for voting in elections.",
+      "procedure": "1. Visit National Voters' Service Portal (nvsp.in).\n2. Fill Form 6 (new registration) online.\n3. Upload photo, age proof, and address proof.\n4. Submit application online or at Electoral Registration Officer (ERO).\n5. Field verification by Booth Level Officer (BLO).\n6. Name added to electoral roll.\n7. Voter ID card issued within 30 days of verification.",
+      "keywords": [
+        "voter id",
+        "election",
+        "EPIC",
+        "voting",
+        "democracy"
+      ],
+      "category": "Government Services"
+    },
+    {
+      "name": "Property Registration",
+      "description": "Legal process to register sale/purchase of immovable property.",
+      "procedure": "1. Draft Sale Deed with details of buyer, seller, and property.\n2. Pay stamp duty (varies by state, 5-7% of property value).\n3. Visit Sub-Registrar office in the jurisdiction of the property.\n4. Both parties (buyer and seller) must be present with 2 witnesses.\n5. Submit Sale Deed, identity proofs, property documents, and stamp duty receipt.\n6. Biometric verification and document signing.\n7. Registered Sale Deed issued (same day or within 7 days).",
+      "keywords": [
+        "property",
+        "registration",
+        "sale deed",
+        "stamp duty",
+        "real estate"
+      ],
+      "category": "Civil Law"
+    },
+    {
+      "name": "Trademark Registration",
+      "description": "Protect your brand name, logo, or slogan under the Trademarks Act, 1999.",
+      "procedure": "1. Search existing trademarks on IP India website (ipindia.gov.in).\n2. File application (TM-A form) online with logo/wordmark.\n3. Pay government fee (₹4,500 for individuals, ₹9,000 for companies).\n4. Application examined by Trademark Registrar (4-6 months).\n5. If objections raised, respond within 30 days.\n6. Publication in Trademark Journal (opposition period: 4 months).\n7. If no opposition, Registration Certificate issued (total time: 18-24 months).",
+      "keywords": [
+        "trademark",
+        "brand",
+        "logo",
+        "intellectual property",
+        "registration"
+      ],
+      "category": "Business Law"
+    },
+    {
+      "name": "GST Registration",
+      "description": "Goods and Services Tax registration for businesses with turnover above ₹40 lakh (₹20 lakh for services).",
+      "procedure": "1. Visit GST Portal (gst.gov.in).\n2. Fill Part A of Form GST REG-01 with basic details (PAN, mobile, email).\n3. Verify OTP and receive Temporary Reference Number (TRN).\n4. Fill Part B with business details and upload documents (PAN, Aadhaar, address proof, bank statement).\n5. Submit application with digital signature (for companies) or e-verification.\n6. Application processed within 7 working days.\n7. GSTIN (15-digit GST Identification Number) issued.",
+      "keywords": [
+        "GST",
+        "tax",
+        "business registration",
+        "GSTIN",
+        "indirect tax"
+      ],
+      "category": "Business Law"
+    },
+    {
+      "name": "Company Incorporation (Private Limited)",
+      "description": "Register a Private Limited Company under the Companies Act, 2013.",
+      "procedure": "1. Obtain Digital Signature Certificate (DSC) for directors.\n2. Apply for Director Identification Number (DIN) on MCA portal.\n3. Reserve company name using RUN (Reserve Unique Name) service.\n4. File SPICe+ form (Simplified Proforma for Incorporating Company Electronically).\n5. Upload MOA (Memorandum of Association) and AOA (Articles of Association).\n6. Pay registration fee (based on authorized capital).\n7. Certificate of Incorporation issued within 2-3 days.\n8. Apply for PAN and TAN automatically via SPICe+.",
+      "keywords": [
+        "company",
+        "incorporation",
+        "private limited",
+        "MCA",
+        "business"
+      ],
+      "category": "Business Law"
+    },
+    {
+      "name": "Filing a Writ Petition",
+      "description": "Approach High Court (Article 226) or Supreme Court (Article 32) for enforcement of fundamental rights.",
+      "procedure": "1. Identify the appropriate writ: Habeas Corpus, Mandamus, Prohibition, Certiorari, or Quo Warranto.\n2. Draft writ petition with facts, legal grounds, and relief sought.\n3. Engage a lawyer (mandatory for Supreme Court, optional for High Court).\n4. File petition in the court registry with court fees.\n5. Court may issue notice to respondents or grant interim relief.\n6. Hearing and arguments by both parties.\n7. Court passes final order/judgment.",
+      "keywords": [
+        "writ",
+        "fundamental rights",
+        "high court",
+        "supreme court",
+        "constitutional remedy"
+      ],
+      "category": "Legal Procedures"
+    },
+    {
+      "name": "Obtaining a Death Certificate",
+      "description": "Legal document certifying the death of a person, required for insurance, property transfer, etc.",
+      "procedure": "1. Report death to local Municipal Corporation/Gram Panchayat within 21 days.\n2. Submit death intimation form with hospital death summary (if applicable).\n3. Provide deceased's identity proof and informant's identity proof.\n4. Pay nominal fee (₹10-50).\n5. Death registered in municipal records.\n6. Death Certificate issued immediately or within 7 days.\n7. For delayed registration (after 21 days), magistrate's permission required.",
+      "keywords": [
+        "death certificate",
+        "municipal corporation",
+        "registration",
+        "legal document"
+      ],
+      "category": "Government Services"
     }
   ],
   "landmark_cases": [
@@ -2153,6 +2281,196 @@
       ],
       "category": "Landmark Judgments",
       "detailed_explanation": "Lily Thomas v. Union of India (2013) aimed to decriminalize Indian politics. The Supreme Court struck down Section 8(4) of the Representation of the People Act, 1951, which allowed convicted MPs and MLAs to retain their seats if they filed an appeal within 3 months. The Court held that Parliament had no power to enact such an exception under the Constitution. Consequently, any lawmaker convicted of a crime and sentenced to imprisonment for two years or more stands immediately disqualified from the date of conviction, losing their seat in the legislature."
+    },
+    {
+      "name": "Nirbhaya Case - Mukesh v. State (2017)",
+      "year": "2017",
+      "significance": "Delhi Gang Rape case. Death penalty upheld for brutal rape and murder. Led to Criminal Law Amendment Act, 2013.",
+      "key_points": [
+        "Death penalty",
+        "Rape law reform",
+        "Juvenile justice",
+        "Fast-track courts"
+      ],
+      "keywords": [
+        "nirbhaya",
+        "delhi rape",
+        "death penalty",
+        "criminal law amendment"
+      ],
+      "category": "Criminal Cases",
+      "detailed_explanation": "The Nirbhaya case (2012) shocked the nation when a 23-year-old physiotherapy student was brutally gang-raped and murdered in Delhi. The Supreme Court upheld the death penalty for four adult convicts in 2017, rejecting their review petitions. This case led to sweeping legal reforms through the Criminal Law (Amendment) Act, 2013, which introduced stricter punishments for sexual offences, including death penalty for repeat offenders and rape causing death. It also led to the establishment of fast-track courts for rape cases and amendments to the Juvenile Justice Act."
+    },
+    {
+      "name": "Jessica Lal Murder Case (2006)",
+      "year": "2006",
+      "significance": "Model Jessica Lal's murder. Initially acquitted, later convicted after public outcry and media pressure.",
+      "key_points": [
+        "Media trial",
+        "Witness intimidation",
+        "Public pressure",
+        "Justice delayed"
+      ],
+      "keywords": [
+        "jessica lal",
+        "murder",
+        "manu sharma",
+        "witness tampering"
+      ],
+      "category": "Criminal Cases",
+      "detailed_explanation": "Jessica Lal, a model, was shot dead in 1999 by Manu Sharma at a Delhi bar when she refused to serve him a drink. Despite 300 witnesses, the trial court acquitted all accused in 2006 due to witness turning hostile. Massive public outrage and media campaigns forced the Delhi High Court to re-examine the case. In 2006, the High Court convicted Manu Sharma, sentencing him to life imprisonment. The Supreme Court upheld this in 2010. This case highlighted the issues of witness intimidation, influence of powerful accused, and the role of media in ensuring justice."
+    },
+    {
+      "name": "2G Spectrum Scam Case (2017)",
+      "year": "2017",
+      "significance": "All accused including A. Raja acquitted. Alleged loss of ₹1.76 lakh crore to exchequer.",
+      "key_points": [
+        "Corruption",
+        "Telecom scam",
+        "CBI investigation",
+        "Acquittal"
+      ],
+      "keywords": [
+        "2g scam",
+        "a raja",
+        "telecom",
+        "corruption"
+      ],
+      "category": "Criminal Cases",
+      "detailed_explanation": "The 2G Spectrum Scam (2008) involved the alleged underpricing of telecom licenses, causing a presumptive loss of ₹1.76 lakh crore to the government. Former Telecom Minister A. Raja and others were accused of criminal conspiracy and corruption. After a 7-year trial, a special CBI court acquitted all accused in 2017, citing lack of evidence. The court held that the prosecution failed to prove the charges beyond reasonable doubt. This case remains one of India's biggest alleged corruption scandals and led to significant political fallout."
+    },
+    {
+      "name": "Bhopal Gas Tragedy Case (2010)",
+      "year": "2010",
+      "significance": "World's worst industrial disaster. Convictions after 26 years, criticized as too lenient.",
+      "key_points": [
+        "Industrial disaster",
+        "Corporate liability",
+        "Delayed justice",
+        "Compensation"
+      ],
+      "keywords": [
+        "bhopal gas",
+        "union carbide",
+        "methyl isocyanate",
+        "disaster"
+      ],
+      "category": "Criminal Cases",
+      "detailed_explanation": "The Bhopal Gas Tragedy (1984) killed thousands when toxic methyl isocyanate gas leaked from Union Carbide's pesticide plant. In 2010, 26 years later, a Bhopal court convicted 8 Indian officials of Union Carbide India Limited to 2 years imprisonment for negligence causing death. Warren Anderson, the American CEO, never faced trial as he fled India. The case is criticized for inadequate punishment, delayed justice, and insufficient compensation to victims. It remains a stark reminder of corporate accountability failures and environmental negligence."
+    },
+    {
+      "name": "Salman Khan Hit-and-Run Case (2015)",
+      "year": "2015",
+      "significance": "Actor Salman Khan acquitted by Bombay HC in 2002 hit-and-run case that killed 1, injured 4.",
+      "key_points": [
+        "Celebrity trial",
+        "Rash driving",
+        "Acquittal",
+        "Witness credibility"
+      ],
+      "keywords": [
+        "salman khan",
+        "hit and run",
+        "drunk driving",
+        "celebrity"
+      ],
+      "category": "Criminal Cases",
+      "detailed_explanation": "In 2002, actor Salman Khan's car ran over pavement dwellers in Mumbai, killing one and injuring four. In 2015, a Sessions Court convicted him of culpable homicide and sentenced him to 5 years imprisonment. However, the Bombay High Court acquitted him later that year, citing lack of evidence that he was driving and doubts over witness credibility. The case sparked debates on celebrity privilege, witness tampering, and the criminal justice system's treatment of the rich and famous."
+    },
+    {
+      "name": "Best Bakery Case (2006)",
+      "year": "2006",
+      "significance": "Gujarat riots case. Witnesses turned hostile, retrial ordered. Convictions upheld by Supreme Court.",
+      "key_points": [
+        "Gujarat riots",
+        "Witness protection",
+        "Retrial",
+        "Mob violence"
+      ],
+      "keywords": [
+        "best bakery",
+        "gujarat riots",
+        "witness protection",
+        "godhra"
+      ],
+      "category": "Criminal Cases",
+      "detailed_explanation": "The Best Bakery case arose from the 2002 Gujarat riots when a mob attacked the bakery in Vadodara, killing 14 people. The trial court acquitted all 21 accused in 2003 after witnesses, including survivor Zaheera Sheikh, turned hostile. The Supreme Court ordered a retrial outside Gujarat with witness protection. In 2006, a Mumbai court convicted 9 accused. The Supreme Court upheld these convictions in 2011. This case led to significant reforms in witness protection laws in India."
+    },
+    {
+      "name": "Arushi Talwar Murder Case (2017)",
+      "year": "2017",
+      "significance": "Parents convicted in 2013, acquitted by Allahabad HC in 2017. Double murder remains unsolved.",
+      "key_points": [
+        "Double murder",
+        "Circumstantial evidence",
+        "Acquittal",
+        "Media trial"
+      ],
+      "keywords": [
+        "arushi talwar",
+        "murder",
+        "noida",
+        "hemraj"
+      ],
+      "category": "Criminal Cases",
+      "detailed_explanation": "14-year-old Arushi Talwar and domestic help Hemraj were found murdered in Noida in 2008. In 2013, a CBI court convicted Arushi's parents, dentists Rajesh and Nupur Talwar, based on circumstantial evidence and sentenced them to life imprisonment. In 2017, the Allahabad High Court acquitted them, stating the prosecution failed to prove guilt beyond reasonable doubt. The case remains unsolved and highlighted issues of media trial, investigative failures, and conviction based on circumstantial evidence."
+    },
+    {
+      "name": "Vodafone Tax Case (2012)",
+      "year": "2012",
+      "significance": "Supreme Court ruled in favor of Vodafone. Government later amended tax laws retrospectively.",
+      "key_points": [
+        "Tax dispute",
+        "Retrospective taxation",
+        "Foreign investment",
+        "Jurisdiction"
+      ],
+      "keywords": [
+        "vodafone",
+        "tax",
+        "retrospective amendment",
+        "hutchison"
+      ],
+      "category": "Civil Cases",
+      "detailed_explanation": "The Vodafone case involved a ₹11,000 crore tax demand on Vodafone's acquisition of Hutchison's Indian telecom assets in 2007. The Income Tax Department claimed capital gains tax was applicable. In 2012, the Supreme Court ruled in Vodafone's favor, holding that the transaction occurred outside India and was not taxable. However, the government retrospectively amended tax laws to override this judgment, sparking controversy over retrospective taxation and its impact on foreign investment. The retrospective amendment was later withdrawn in 2021."
+    },
+    {
+      "name": "Sabarimala Temple Entry Case (2018)",
+      "year": "2018",
+      "significance": "Allowed women of all ages to enter Sabarimala temple. Sparked religious vs. gender equality debate.",
+      "key_points": [
+        "Religious freedom",
+        "Gender equality",
+        "Article 25",
+        "Essential practices"
+      ],
+      "keywords": [
+        "sabarimala",
+        "women entry",
+        "temple",
+        "gender equality"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "The Sabarimala Temple in Kerala traditionally barred women aged 10-50 from entry, citing the deity's celibate nature. In 2018, a 5-judge Supreme Court bench ruled 4:1 that this practice violated women's right to equality (Article 14) and right to worship (Article 25). The Court held that religion cannot be used to deny women their fundamental rights. This sparked massive protests and the case was referred to a larger 9-judge bench to examine the scope of religious freedom vs. constitutional rights. The review is still pending."
+    },
+    {
+      "name": "Uphaar Cinema Fire Tragedy (2015)",
+      "year": "2015",
+      "significance": "59 died in 1997 cinema fire. Owners convicted but given lenient sentence. Compensation awarded.",
+      "key_points": [
+        "Criminal negligence",
+        "Fire safety",
+        "Compensation",
+        "Lenient sentencing"
+      ],
+      "keywords": [
+        "uphaar",
+        "fire tragedy",
+        "delhi",
+        "ansals"
+      ],
+      "category": "Criminal Cases",
+      "detailed_explanation": "The Uphaar Cinema fire (1997) in Delhi killed 59 people due to criminal negligence and lack of fire safety measures. Cinema owners Sushil and Gopal Ansal were convicted of causing death by negligence in 2007 and sentenced to 2 years imprisonment. However, due to their age and time already served, they were released. The Supreme Court later imposed a ₹30 crore fine each in lieu of imprisonment. The case highlighted gaps in fire safety regulations and enforcement in public spaces."
     }
   ],
   "quick_replies": [
