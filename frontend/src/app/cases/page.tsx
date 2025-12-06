@@ -6,8 +6,10 @@ import { casesAPI } from '@/lib/api'
 import Image from 'next/image'
 import { Search, Gavel, Calendar, X, Scale } from 'lucide-react'
 import type { LandmarkCase } from '@/types'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function CasesPage() {
+    const { t } = useLanguage()
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedYear, setSelectedYear] = useState<string>('')
     const [selectedCase, setSelectedCase] = useState<LandmarkCase | null>(null)
@@ -52,9 +54,9 @@ export default function CasesPage() {
                         <div className="flex justify-center mb-4">
                             <Gavel className="w-16 h-16 text-primary-400" />
                         </div>
-                        <h1 className="text-4xl font-display font-bold mb-4 text-white">Landmark Cases</h1>
+                        <h1 className="text-4xl font-display font-bold mb-4 text-white">{t('cases.title')}</h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                            Explore landmark judgments that shaped Indian constitutional law
+                            {t('cases.subtitle')}
                         </p>
                     </div>
 
@@ -66,7 +68,7 @@ export default function CasesPage() {
                                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                                 <input
                                     type="text"
-                                    placeholder="Search cases by name or keywords..."
+                                    placeholder={t('cases.searchPlaceholder')}
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -81,7 +83,7 @@ export default function CasesPage() {
                                     onChange={(e) => setSelectedYear(e.target.value)}
                                     className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none"
                                 >
-                                    <option value="">All Years</option>
+                                    <option value="">{t('cases.allYears')}</option>
                                     {years.map((year) => (
                                         <option key={year} value={year}>
                                             {year}
@@ -96,7 +98,7 @@ export default function CasesPage() {
                             <div className="flex flex-wrap gap-2 mt-4">
                                 {searchQuery && (
                                     <span className="inline-flex items-center bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">
-                                        Search: {searchQuery}
+                                        {t('cases.searchLabel')} {searchQuery}
                                         <button onClick={() => setSearchQuery('')} className="ml-2">
                                             <X className="w-4 h-4" />
                                         </button>
@@ -104,7 +106,7 @@ export default function CasesPage() {
                                 )}
                                 {selectedYear && (
                                     <span className="inline-flex items-center bg-secondary-100 text-secondary-700 px-3 py-1 rounded-full text-sm">
-                                        Year: {selectedYear}
+                                        {t('cases.yearLabel')} {selectedYear}
                                         <button onClick={() => setSelectedYear('')} className="ml-2">
                                             <X className="w-4 h-4" />
                                         </button>
@@ -117,7 +119,7 @@ export default function CasesPage() {
                     {/* Results Count */}
                     {cases && (
                         <div className="mb-4 text-gray-200">
-                            Found <span className="font-semibold text-white">{cases.length}</span> landmark case{cases.length !== 1 && 's'}
+                            {t('cases.found')} <span className="font-semibold text-white">{cases.length}</span> {cases.length === 1 ? t('cases.landmarkCase') : t('cases.landmarkCases')}
                         </div>
                     )}
 
@@ -125,7 +127,7 @@ export default function CasesPage() {
                     {isLoading ? (
                         <div className="text-center py-12">
                             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-400"></div>
-                            <p className="mt-4 text-gray-300">Loading cases...</p>
+                            <p className="mt-4 text-gray-300">{t('common.loading')}</p>
                         </div>
                     ) : cases && cases.length > 0 ? (
                         <div className="grid md:grid-cols-2 gap-6">
@@ -140,7 +142,7 @@ export default function CasesPage() {
                     ) : (
                         <div className="text-center py-12 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-lg">
                             <Gavel className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-                            <p className="text-gray-600 dark:text-gray-300">No cases found. Try adjusting your search or filters.</p>
+                            <p className="text-gray-600 dark:text-gray-300">{t('cases.noResults')}</p>
                         </div>
                     )}
                 </div>

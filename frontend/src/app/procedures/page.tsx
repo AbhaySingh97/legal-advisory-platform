@@ -5,8 +5,10 @@ import { useQuery } from '@tanstack/react-query'
 import { proceduresAPI } from '@/lib/api'
 import { Search, FileText, ChevronRight, X, ListChecks } from 'lucide-react'
 import type { Procedure } from '@/types'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function ProceduresPage() {
+    const { t } = useLanguage()
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedProcedure, setSelectedProcedure] = useState<Procedure | null>(null)
 
@@ -37,9 +39,9 @@ export default function ProceduresPage() {
                 <div className="container-custom">
                     {/* Header */}
                     <div className="text-center mb-12">
-                        <h1 className="text-4xl font-display font-bold mb-4 text-white">Legal Procedures</h1>
+                        <h1 className="text-4xl font-display font-bold mb-4 text-white">{t('procedures.title')}</h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                            Step-by-step guides for various legal processes and procedures
+                            {t('procedures.subtitle')}
                         </p>
                     </div>
 
@@ -49,7 +51,7 @@ export default function ProceduresPage() {
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                             <input
                                 type="text"
-                                placeholder="Search procedures by name or keywords..."
+                                placeholder={t('procedures.searchPlaceholder')}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -72,7 +74,7 @@ export default function ProceduresPage() {
                     {/* Results Count */}
                     {procedures && (
                         <div className="mb-4 text-gray-200">
-                            Found <span className="font-semibold text-white">{procedures.length}</span> procedure{procedures.length !== 1 && 's'}
+                            {t('procedures.found')} <span className="font-semibold text-white">{procedures.length}</span> {procedures.length === 1 ? t('procedures.procedure') : t('procedures.procedures')}
                         </div>
                     )}
 
@@ -80,7 +82,7 @@ export default function ProceduresPage() {
                     {isLoading ? (
                         <div className="text-center py-12">
                             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-400"></div>
-                            <p className="mt-4 text-gray-300">Loading procedures...</p>
+                            <p className="mt-4 text-gray-300">{t('common.loading')}</p>
                         </div>
                     ) : procedures && procedures.length > 0 ? (
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -95,7 +97,7 @@ export default function ProceduresPage() {
                     ) : (
                         <div className="text-center py-12 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-lg">
                             <FileText className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
-                            <p className="text-gray-600 dark:text-gray-300">No procedures found. Try adjusting your search.</p>
+                            <p className="text-gray-600 dark:text-gray-300">{t('procedures.noResults')}</p>
                         </div>
                     )}
                 </div>
