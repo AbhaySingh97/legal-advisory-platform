@@ -1,0 +1,91 @@
+🏛️ Excited to share my latest project: AI-Powered Legal Advisory Platform! 🚀
+
+After investing 20+ hours of dedicated development, I've built a comprehensive platform that democratizes access to Indian constitutional law, making legal knowledge accessible to everyone.
+
+🎯 KEY FEATURES:
+
+✅ AI-Powered Legal Chatbot with NLP
+   - Natural language understanding for legal queries
+   - Context-aware responses from 100+ constitutional articles
+   - Real-time chat with markdown support
+
+✅ Constitution Library
+   - 100+ articles with detailed explanations
+   - Advanced search & category-based filtering
+   - Keyword tagging for easy discovery
+
+✅ Landmark Cases Database
+   - 20+ landmark judgments with detailed analysis
+   - Year-based filtering & comprehensive explanations
+   - Cross-referenced with related keywords
+
+✅ Legal Procedures Guide
+   - 15+ step-by-step procedures (PIL, RTI, FIR, etc.)
+   - User-friendly format with important disclaimers
+
+✅ Dark/Light Theme System
+   - Automatic detection & manual toggle
+   - Complete coverage across all pages
+   - Persistent user preferences
+
+✅ Bilingual Support (In Progress)
+   - English & Hindi language switching
+   - Scalable architecture for more languages
+
+🛠️ TECH STACK:
+Frontend: Next.js 16, React 19, TypeScript, Tailwind CSS
+Backend: FastAPI, PostgreSQL, SQLAlchemy
+AI/NLP: Custom model for legal query understanding
+Deployment: Render (Production-ready)
+
+💡 WHY THIS MATTERS:
+- Legal information in India is scattered and complex
+- Language barriers prevent access to constitutional knowledge
+- Lack of user-friendly platforms for legal education
+- This platform bridges that gap!
+
+🎯 TARGET AUDIENCE:
+- Law students & researchers
+- Citizens seeking legal information
+- Legal professionals for quick reference
+- Journalists covering legal stories
+
+🚀 FUTURE SCOPE:
+- Complete Hindi translation
+- Advanced AI with transformer models
+- User accounts & community features
+- Mobile apps (iOS & Android)
+- Legal document analysis
+
+📊 ACHIEVEMENTS:
+✅ 100+ Constitutional Articles integrated
+✅ 20+ Landmark Cases documented
+✅ 15+ Legal Procedures explained
+✅ Full-stack implementation from scratch
+✅ Production deployment with CI/CD
+✅ Responsive design for all devices
+
+🎓 KEY LEARNINGS:
+- Full-stack development with modern technologies
+- AI/NLP integration in web applications
+- Database design for complex legal content
+- Theme implementation & internationalization
+- Cloud deployment & DevOps practices
+
+🔧 CHALLENGES OVERCOME:
+- Complex data structure organization
+- NLP integration for legal queries
+- Dark mode consistency across components
+- Bilingual architecture design
+- Performance optimization with large datasets
+
+💬 What features would you like to see next?
+🔄 Share if you believe in democratizing legal education!
+
+#FullStackDevelopment #AI #MachineLearning #LegalTech #NextJS #React #FastAPI #WebDevelopment #Innovation #LegalEducation #AccessToJustice #ConstitutionOfIndia #TechForGood #BuildInPublic #DeveloperLife
+
+🔗 Live Demo: [Your Deployment URL]
+💻 GitHub: [Your GitHub Repo]
+🌐 Portfolio: [Your Portfolio URL]
+
+Looking forward to connecting with fellow developers, legal tech enthusiasts, and anyone passionate about making legal knowledge accessible! 🤝
