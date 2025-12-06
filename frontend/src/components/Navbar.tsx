@@ -23,7 +23,7 @@ export default function Navbar() {
     ]
 
     return (
-        <nav className="bg-gradient-to-r from-red-900/70 via-red-800/70 to-orange-900/70 dark:from-red-950/70 dark:via-red-900/70 dark:to-orange-950/70 backdrop-blur-md sticky top-0 z-50 border-b border-red-700/20 dark:border-red-800/30 transition-colors duration-300 shadow-lg shadow-red-900/10">
+        <nav className="bg-gray-900/80 dark:bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 border-b border-white/10 dark:border-slate-700/50 transition-colors duration-300">
             <div className="container-custom">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo & Back Button */}
