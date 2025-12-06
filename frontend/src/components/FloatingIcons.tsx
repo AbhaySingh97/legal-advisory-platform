@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Scale, BookOpen, Gavel, Shield } from 'lucide-react'
 
