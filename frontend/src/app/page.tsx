@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Scale, MessageSquare, BookOpen, Gavel, FileText, TrendingUp } from 'lucide-react'
+import FloatingIcons from '@/components/FloatingIcons'
+import AnimatedCounter from '@/components/AnimatedCounter'
 
 export default function HomePage() {
     return (
@@ -34,25 +36,63 @@ export default function HomePage() {
             {/* Hero Section */}
             <section className="relative text-white py-20 md:py-32 z-10">
                 <div className="container-custom">
-                    <div className="max-w-4xl mx-auto text-center animate-fade-in">
-                        <div className="flex justify-center mb-6">
-                            <Scale className="w-16 h-16 md:w-20 md:h-20" />
+                    <div className="max-w-4xl mx-auto text-center">
+                        {/* Floating Legal Icons Background */}
+                        <div className="absolute inset-0 pointer-events-none">
+                            <FloatingIcons />
                         </div>
-                        <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">
-                            Your Complete Legal Advisory Platform
+
+                        {/* Animated Scale Icon */}
+                        <div className="flex justify-center mb-6 fade-in-up">
+                            <div className="bounce-subtle">
+                                <Scale className="w-16 h-16 md:w-20 md:h-20 glow" />
+                            </div>
+                        </div>
+
+                        {/* Main Heading with Gradient */}
+                        <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 fade-in-up stagger-1">
+                            <span className="gradient-text neon-glow">
+                                Your Complete Legal Advisory Platform
+                            </span>
                         </h1>
-                        <p className="text-xl md:text-2xl mb-8 text-white/90">
+
+                        {/* Subheading */}
+                        <p className="text-xl md:text-2xl mb-8 text-white/90 fade-in-up stagger-2">
                             Navigate Indian Constitution, Case Laws, and Legal Procedures with AI-Powered Guidance
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto px-4 sm:px-0">
-                            <Link href="/chatbot" className="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+
+                        {/* CTA Buttons with Enhanced Hover */}
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto px-4 sm:px-0 fade-in-up stagger-3">
+                            <Link
+                                href="/chatbot"
+                                className="btn-primary bg-white text-primary-600 hover:bg-gray-100 btn-ripple scale-hover shadow-lg hover:shadow-2xl"
+                            >
                                 <MessageSquare className="inline-block w-5 h-5 mr-2" />
                                 Start Chatbot
                             </Link>
-                            <Link href="/library" className="btn-outline border-white text-white hover:bg-white hover:text-primary-600">
+                            <Link
+                                href="/library"
+                                className="btn-outline border-white text-white hover:bg-white hover:text-primary-600 btn-ripple scale-hover"
+                            >
                                 <BookOpen className="inline-block w-5 h-5 mr-2" />
                                 Explore Library
                             </Link>
+                        </div>
+
+                        {/* Statistics Section */}
+                        <div className="grid grid-cols-3 gap-4 md:gap-8 mt-16 fade-in-up stagger-4">
+                            <div className="text-center glass-card-dark p-4 md:p-6 rounded-xl hover-lift">
+                                <AnimatedCounter end={120} suffix="+" />
+                                <p className="text-sm md:text-base text-white/80 mt-2">Articles</p>
+                            </div>
+                            <div className="text-center glass-card-dark p-4 md:p-6 rounded-xl hover-lift">
+                                <AnimatedCounter end={25} suffix="+" />
+                                <p className="text-sm md:text-base text-white/80 mt-2">Landmark Cases</p>
+                            </div>
+                            <div className="text-center glass-card-dark p-4 md:p-6 rounded-xl hover-lift">
+                                <AnimatedCounter end={20} suffix="+" />
+                                <p className="text-sm md:text-base text-white/80 mt-2">Procedures</p>
+                            </div>
                         </div>
                     </div>
                 </div>
