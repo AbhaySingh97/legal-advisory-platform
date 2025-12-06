@@ -5,14 +5,13 @@ export default function HomePage() {
     return (
         <div className="min-h-screen relative">
             {/* Background Image for entire page */}
-            {/* Background Image for entire page */}
-            <div
-                className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40"
-                style={{
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80")'
-                }}
-            >
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/80 to-gray-900/90"></div>
+            <div className="fixed inset-0 z-0 pointer-events-none bg-black">
+                <img
+                    src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
+                    alt="Background"
+                    className="w-full h-full object-cover object-center opacity-70"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>
 
             {/* Hero Section */}
