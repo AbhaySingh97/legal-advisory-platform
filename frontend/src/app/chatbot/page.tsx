@@ -118,16 +118,16 @@ export default function ChatbotPage() {
                 </div>
 
                 {/* Main Chat Area */}
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 min-h-[600px] flex flex-col">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-slate-700 min-h-[600px] flex flex-col">
                     {/* Messages List */}
-                    <div className="flex-1 overflow-y-auto p-4 space-y-6 bg-gray-50/50">
+                    <div className="flex-1 overflow-y-auto p-4 space-y-6 bg-gray-50/50 dark:bg-slate-900/50">
                         {messages.map((message) => (
                             <MessageBubble key={message.id} message={message} />
                         ))}
 
                         {isLoading && (
-                            <div className="bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3 inline-block">
-                                <Loader2 className="w-5 h-5 animate-spin text-primary-600" />
+                            <div className="bg-gray-100 dark:bg-slate-700 rounded-2xl rounded-tl-none px-4 py-3 inline-block">
+                                <Loader2 className="w-5 h-5 animate-spin text-primary-600 dark:text-primary-400" />
                             </div>
                         )}
                         <div ref={messagesEndRef} />
@@ -135,8 +135,8 @@ export default function ChatbotPage() {
 
                     {/* Quick Replies */}
                     {quickReplies && quickReplies.length > 0 && (
-                        <div className="px-6 py-3 bg-gray-50 border-t border-gray-200">
-                            <p className="text-sm text-gray-600 mb-2 flex items-center">
+                        <div className="px-6 py-3 bg-gray-50 dark:bg-slate-900 border-t border-gray-200 dark:border-slate-700">
+                            <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 flex items-center">
                                 <Sparkles className="w-4 h-4 mr-1" />
                                 Quick Questions:
                             </p>
@@ -145,7 +145,7 @@ export default function ChatbotPage() {
                                     <button
                                         key={reply.id}
                                         onClick={() => handleSend(reply.text)}
-                                        className="text-sm bg-white border border-primary-200 text-primary-700 px-4 py-2.5 md:px-3 md:py-1.5 rounded-full hover:bg-primary-50 hover:border-primary-300 transition-colors"
+                                        className="text-sm bg-white dark:bg-slate-700 border border-primary-200 dark:border-primary-700 text-primary-700 dark:text-primary-300 px-4 py-2.5 md:px-3 md:py-1.5 rounded-full hover:bg-primary-50 dark:hover:bg-slate-600 hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
                                     >
                                         {reply.text}
                                     </button>
@@ -155,7 +155,7 @@ export default function ChatbotPage() {
                     )}
 
                     {/* Input Area */}
-                    <div className="p-4 bg-white border-t border-gray-200">
+                    <div className="p-4 bg-white dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700">
                         <div className="flex items-end space-x-3">
                             <div className="flex-1">
                                 <textarea
@@ -163,7 +163,7 @@ export default function ChatbotPage() {
                                     onChange={(e) => setInput(e.target.value)}
                                     onKeyPress={handleKeyPress}
                                     placeholder="Type your legal question here..."
-                                    className="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+                                    className="w-full px-4 py-3 text-base border border-gray-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
                                     rows={1}
                                     disabled={isLoading}
                                 />
@@ -171,7 +171,7 @@ export default function ChatbotPage() {
                             <button
                                 onClick={() => handleSend()}
                                 disabled={!input.trim() || isLoading}
-                                className="bg-primary-600 text-white p-3 min-w-[48px] min-h-[48px] rounded-xl hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+                                className="bg-primary-600 dark:bg-primary-500 text-white p-3 min-w-[48px] min-h-[48px] rounded-xl hover:bg-primary-700 dark:hover:bg-primary-600 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
                             >
                                 <Send className="w-5 h-5" />
                             </button>
@@ -203,13 +203,13 @@ export default function ChatbotPage() {
                     onClick={() => setShowAboutModal(false)}
                 >
                     <div
-                        className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in zoom-in-95 duration-300"
+                        className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in zoom-in-95 duration-300"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
                         <button
                             onClick={() => setShowAboutModal(false)}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                            className="absolute top-4 right-4 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                             aria-label="Close modal"
                         >
                             <X className="w-6 h-6" />
@@ -264,7 +264,7 @@ function MessageBubble({ message }: { message: Message }) {
             <div className={`flex-1 ${!isBot && 'flex justify-end'}`}>
                 <div
                     className={`inline-block max-w-[80%] px-4 py-3 rounded-2xl ${isBot
-                        ? 'bg-gray-100 text-gray-800 rounded-tl-none'
+                        ? 'bg-gray-100 dark:bg-slate-700 text-gray-800 dark:text-gray-200 rounded-tl-none'
                         : 'bg-gradient-to-br from-primary-600 to-secondary-600 text-white rounded-tr-none'
                         }`}
                 >
@@ -276,7 +276,7 @@ function MessageBubble({ message }: { message: Message }) {
                         <p className="text-sm">{message.text}</p>
                     )}
                 </div>
-                <p className={`text-xs text-gray-500 mt-1 ${!isBot && 'text-right'}`}>
+                <p className={`text-xs text-gray-500 dark:text-gray-400 mt-1 ${!isBot && 'text-right'}`}>
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </p>
             </div>
