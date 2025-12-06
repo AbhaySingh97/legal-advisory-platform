@@ -80,7 +80,7 @@ class ChatService:
         
         # Detect query intent
         if any(word in query_lower for word in ['right', 'freedom', 'equality', 'liberty']):
-            return \"\"\"I don't have specific information about that query, but here are related constitutional topics:
+            return """I don't have specific information about that query, but here are related constitutional topics:
 
 **Fundamental Rights (Part III):**
 • Right to Equality (Articles 14-18)
@@ -90,7 +90,7 @@ class ChatService:
 • Cultural and Educational Rights (Articles 29-30)
 • Right to Constitutional Remedies (Article 32)
 
-Try asking about a specific article number or right!\"\"\"
+Try asking about a specific article number or right!"""
         
         elif any(word in query_lower for word in ['duty', 'duties', 'responsibility']):
             return \"\"\"**Fundamental Duties (Article 51A):**
