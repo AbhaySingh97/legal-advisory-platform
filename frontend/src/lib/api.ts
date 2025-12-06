@@ -1,21 +1,5 @@
 import axios from 'axios'
-import type { Article, LandmarkCase, Procedure, QuickReply, ChatMessage, ChatResponse } from '@/types'
-
-const getBaseUrl = () => {
-    let url = process.env.NEXT_PUBLIC_API_URL
-
-    // If no env var is set, or it's localhost but we're in the browser and not on localhost
-    if (!url || url.includes('localhost')) {
-        if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
-            // We are in production but using localhost URL or no URL - fallback to production backend
-            url = 'https://legal-advisory-backend-ycde.onrender.com'
-        } else {
-            url = url || 'http://localhost:8000'
-        }
-    }
-
-    // Remove trailing slash if present
-    return url.endsWith('/') ? url.slice(0, -1) : url
+return url.endsWith('/') ? url.slice(0, -1) : url
 }
 
 const API_URL = getBaseUrl()
