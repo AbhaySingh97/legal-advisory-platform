@@ -8,7 +8,7 @@ const getBaseUrl = () => {
     if (!url || url.includes('localhost')) {
         if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
             // We are in production but using localhost URL or no URL - fallback to production backend
-            url = 'https://legal-advisory-platform-production.up.railway.app'
+            url = 'https://legal-advisory-backend-ycde.onrender.com'
         } else {
             url = url || 'http://localhost:8000'
         }
