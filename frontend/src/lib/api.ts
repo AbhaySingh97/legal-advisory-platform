@@ -9,7 +9,7 @@ const getBaseUrl = () => {
         if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
             // We are in production but using localhost URL or no URL - fallback to production backend
             // TODO: Replace with your actual Render backend URL
-            url = 'https://legal-advisory-backend.onrender.com'
+            url = 'https://legal-advisory-backend-ycde.onrender.com'
         } else {
             url = url || 'http://localhost:8000'
         }
