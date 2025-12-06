@@ -1491,6 +1491,115 @@
         "democracy"
       ],
       "category": "Elections"
+    },
+    {
+      "number": "161",
+      "title": "Power of Governor to grant pardons, etc.",
+      "description": "The Governor of a State shall have the power to grant pardons, reprieves, respites or remissions of punishment or to suspend, remit or commute the sentence of any person convicted of any offence against any law relating to a matter to which the executive power of the State extends.",
+      "keywords": [
+        "governor",
+        "pardon",
+        "state",
+        "mercy"
+      ],
+      "category": "State Executive"
+    },
+    {
+      "number": "165",
+      "title": "Advocate-General for the State",
+      "description": "The Governor of each State shall appoint a person who is qualified to be appointed a Judge of a High Court to be Advocate-General for the State.",
+      "keywords": [
+        "advocate general",
+        "legal advisor",
+        "state government",
+        "law officer"
+      ],
+      "category": "State Executive"
+    },
+    {
+      "number": "213",
+      "title": "Power of Governor to promulgate Ordinances during recess of Legislature",
+      "description": "If at any time, except when the Legislative Assembly of a State is in session, the Governor is satisfied that circumstances exist which render it necessary for him to take immediate action, he may promulgate such Ordinances.",
+      "keywords": [
+        "ordinance",
+        "governor",
+        "state legislature",
+        "law making"
+      ],
+      "category": "State Executive"
+    },
+    {
+      "number": "262",
+      "title": "Adjudication of disputes relating to waters of inter-State rivers or river valleys",
+      "description": "Parliament may by law provide for the adjudication of any dispute or complaint with respect to the use, distribution or control of the waters of, or in, any inter-State river or river valley.",
+      "keywords": [
+        "river dispute",
+        "water",
+        "inter-state",
+        "tribunal"
+      ],
+      "category": "Relations between Union and States"
+    },
+    {
+      "number": "263",
+      "title": "Provisions with respect to an inter-State Council",
+      "description": "If at any time it appears to the President that the public interest would be served by the establishment of a Council charged with the duty of inquiring into and advising upon disputes which may have arisen between States.",
+      "keywords": [
+        "inter-state council",
+        "coordination",
+        "federalism",
+        "center-state"
+      ],
+      "category": "Relations between Union and States"
+    },
+    {
+      "number": "312",
+      "title": "All-India Services",
+      "description": "Parliament may by law provide for the creation of one or more all-India services (including an all-India judicial service) common to the Union and the States.",
+      "keywords": [
+        "IAS",
+        "IPS",
+        "civil services",
+        "all india services"
+      ],
+      "category": "Services under Union and States"
+    },
+    {
+      "number": "315",
+      "title": "Public Service Commissions for the Union and for the States",
+      "description": "Subject to the provisions of this article, there shall be a Public Service Commission for the Union and a Public Service Commission for each State.",
+      "keywords": [
+        "UPSC",
+        "SPSC",
+        "public service commission",
+        "recruitment"
+      ],
+      "category": "Services under Union and States"
+    },
+    {
+      "number": "330",
+      "title": "Reservation of seats for Scheduled Castes and Scheduled Tribes in the House of the People",
+      "description": "Seats shall be reserved in the House of the People for the Scheduled Castes and the Scheduled Tribes.",
+      "keywords": [
+        "reservation",
+        "SC",
+        "ST",
+        "lok sabha",
+        "parliament"
+      ],
+      "category": "Special Provisions"
+    },
+    {
+      "number": "338",
+      "title": "National Commission for Scheduled Castes",
+      "description": "There shall be a Commission for the Scheduled Castes to be known as the National Commission for Scheduled Castes.",
+      "keywords": [
+        "NCSC",
+        "scheduled castes",
+        "commission",
+        "rights"
+      ],
+      "category": "Special Provisions"
     }
   ],
   "procedures": [
@@ -1624,6 +1733,58 @@
         "court"
       ],
       "category": "Criminal Law"
+    },
+    {
+      "name": "Filing a Cheque Bounce Case",
+      "description": "Procedure for legal action when a cheque is dishonoured due to insufficient funds (Section 138 NI Act).",
+      "procedure": "1. Collect the 'Cheque Return Memo' from your bank.\n2. Send a Legal Notice to the drawer (issuer) within 30 days of receiving the memo, demanding payment.\n3. Give the drawer 15 days to pay.\n4. If unpaid, file a complaint in the Magistrate's Court within 30 days after the 15-day notice period expires.\n5. Submit documents: Original Cheque, Return Memo, Legal Notice copy, Proof of Delivery.",
+      "keywords": [
+        "cheque bounce",
+        "section 138",
+        "finance",
+        "debt",
+        "legal notice"
+      ],
+      "category": "Civil Law"
+    },
+    {
+      "name": "Filing a Domestic Violence Complaint",
+      "description": "Legal recourse for women facing domestic abuse under the PWDVA Act, 2005.",
+      "procedure": "1. Approach a Protection Officer (PO), Police Station, or Magistrate.\n2. File a 'Domestic Incident Report' (DIR).\n3. You can seek various orders: Protection Order (stop abuse), Residence Order (right to stay in home), Monetary Relief (expenses), Custody Order (children).\n4. The Magistrate must start hearing within 3 days.\n5. Breach of a Protection Order is a criminal offence.",
+      "keywords": [
+        "domestic violence",
+        "women safety",
+        "protection order",
+        "abuse",
+        "dowry"
+      ],
+      "category": "Family Law"
+    },
+    {
+      "name": "Marriage Registration",
+      "description": "Procedure to legally register a marriage and obtain a Marriage Certificate.",
+      "procedure": "1. Visit the Sub-Divisional Magistrate (SDM) office or online state portal.\n2. Fill application (Hindu Marriage Act or Special Marriage Act).\n3. Documents: Proof of Age, Address, Wedding Invitation Card, Photos of Marriage, Aadhar Cards.\n4. Both partners and 3 witnesses must appear before the registrar.\n5. Sign the register, and the certificate is issued (same day or within weeks).",
+      "keywords": [
+        "marriage certificate",
+        "registration",
+        "spouse",
+        "wedding",
+        "legal proof"
+      ],
+      "category": "Family Law"
+    },
+    {
+      "name": "Obtaining a Succession Certificate",
+      "description": "Required to inherit movable assets (bank deposits, shares) of a deceased person without a will.",
+      "procedure": "1. File a petition in the District Judge's court in the jurisdiction where the deceased lived.\n2. Include details of death, family members, and assets to be claimed.\n3. The Court issues a public notice in newspapers (45 days period for objections).\n4. If no objections, the court hears the petitioner.\n5. Court asks for a bond/security and issues the Succession Certificate.",
+      "keywords": [
+        "inheritance",
+        "succession",
+        "property",
+        "assets",
+        "death"
+      ],
+      "category": "Civil Law"
     }
   ],
   "landmark_cases": [
@@ -1914,6 +2075,84 @@
       ],
       "category": "Landmark Judgments",
       "detailed_explanation": "The Ayodhya Verdict (2019) resolved the century-old dispute over the Ram Janmabhoomi-Babri Masjid site. A 5-judge bench unanimously awarded the disputed 2.77 acres of land to the Hindu parties for the construction of a Ram Temple, relying on archaeological evidence (ASI report) indicating a pre-existing non-Islamic structure. Using its special powers under Article 142 to ensure complete justice, the Court also directed the government to allot an alternative 5-acre plot in Ayodhya to the Sunni Waqf Board for the construction of a mosque."
+    },
+    {
+      "name": "ADM Jabalpur v. Shivkant Shukla (1976)",
+      "year": "1976",
+      "significance": "The 'Habeas Corpus' case. Controversial judgment stating no right to liberty during Emergency.",
+      "key_points": [
+        "Habeas Corpus",
+        "Emergency",
+        "Right to Life suspended",
+        "Darkest hour of judiciary"
+      ],
+      "keywords": [
+        "emergency",
+        "habeas corpus",
+        "personal liberty",
+        "detention"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "ADM Jabalpur v. Shivkant Shukla (1976) is widely regarded as the 'darkest hour' of the Indian judiciary. During the National Emergency (1975-77), the question arose whether the right to move court for a Writ of Habeas Corpus (challenging illegal detention) remained available when Fundamental Rights were suspended. In a 4:1 controversial verdict (Justice H.R. Khanna dissenting), the Supreme Court held that during an Emergency, citizens have no locus standi to move court for any enforcement of rights, even the Right to Life (Article 21). This judgment was later overruled by the Puttaswamy judgment (Privacy case) and the 44th Amendment acted to prevent Article 21 from ever being suspended again."
+    },
+    {
+      "name": "Mohd. Ahmed Khan v. Shah Bano Begum (1985)",
+      "year": "1985",
+      "significance": "Upheld Muslim women's right to maintenance under CrPC. Sparked major political debate.",
+      "key_points": [
+        "Section 125 CrPC",
+        "Maintenance",
+        "Muslim Personal Law",
+        "Gender justice"
+      ],
+      "keywords": [
+        "shah bano",
+        "maintenance",
+        "divorce",
+        "muslim women",
+        "alimony"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "The Shah Bano Case (1985) was a milestone for gender justice in India. Shah Bano, a 62-year-old Muslim woman divorced by her husband, sought maintenance under Section 125 of the Code of Criminal Procedure (CrPC), a secular law applicable to all. The Supreme Court admitted her claim, ruling that CrPC overrides personal laws when they conflict on such matters. This caused a backlash from orthodox sections who saw it as interference in Muslim Personal Law. The government subsequently enacted the Muslim Women (Protection of Rights on Divorce) Act, 1986, to nullify the judgment's effect, restricting maintenance to the 'iddat' period."
+    },
+    {
+      "name": "D.K. Basu v. State of West Bengal (1997)",
+      "year": "1997",
+      "significance": "Laid down guidelines for arrest and detention to prevent custodial torture.",
+      "key_points": [
+        "DK Basu guidelines",
+        "Custodial torture",
+        "Arrest memo",
+        "Rights of arrestee"
+      ],
+      "keywords": [
+        "arrest",
+        "police",
+        "custody",
+        "human rights",
+        "torture"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "D.K. Basu v. State of West Bengal (1997) addressed the growing issue of custodial deaths and police violence. The Supreme Court issued the historic 'D.K. Basu Guidelines' which the police must strictly follow during arrest and detention. These include: (1) Police personnel must bear accurate name tags; (2) An arrest memo must be prepared and attested by a witness; (3) The arrestee has a right to inform a family member/friend; (4) Inspection of body for injuries at the time of arrest; (5) Medical examination every 48 hours. Failure to comply renders the official liable for departmental action and contempt of court."
+    },
+    {
+      "name": "Lily Thomas v. Union of India (2013)",
+      "year": "2013",
+      "significance": "Ruled that MPs/MLAs convicted of crimes with 2+ year sentences are immediately disqualified.",
+      "key_points": [
+        "Decriminalization of politics",
+        "Immediate disqualification",
+        "Section 8(4) RPA struck down"
+      ],
+      "keywords": [
+        "corruption",
+        "politics",
+        "disqualification",
+        "MP",
+        "MLA"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "Lily Thomas v. Union of India (2013) aimed to decriminalize Indian politics. The Supreme Court struck down Section 8(4) of the Representation of the People Act, 1951, which allowed convicted MPs and MLAs to retain their seats if they filed an appeal within 3 months. The Court held that Parliament had no power to enact such an exception under the Constitution. Consequently, any lawmaker convicted of a crime and sentenced to imprisonment for two years or more stands immediately disqualified from the date of conviction, losing their seat in the legislature."
     }
   ],
   "quick_replies": [
