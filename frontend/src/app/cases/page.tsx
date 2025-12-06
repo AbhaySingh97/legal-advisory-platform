@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { casesAPI } from '@/lib/api'
+import Image from 'next/image'
 import { Search, Gavel, Calendar, X, Scale } from 'lucide-react'
 import type { LandmarkCase } from '@/types'
 
@@ -32,11 +33,13 @@ export default function CasesPage() {
         <div className="min-h-screen relative">
             {/* Background Image */}
             {/* Background Image */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                <img
+            <div className="fixed inset-0 z-0 pointer-events-none bg-black">
+                <Image
                     src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
                     alt="Supreme Court"
-                    className="w-full h-full object-cover object-center opacity-70"
+                    fill
+                    className="object-cover object-center opacity-70"
+                    priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>

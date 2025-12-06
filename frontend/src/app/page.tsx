@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Scale, MessageSquare, BookOpen, Gavel, FileText, TrendingUp } from 'lucide-react'
 
 export default function HomePage() {
@@ -6,10 +7,12 @@ export default function HomePage() {
         <div className="min-h-screen relative">
             {/* Background Image for entire page */}
             <div className="fixed inset-0 z-0 pointer-events-none bg-black">
-                <img
+                <Image
                     src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
                     alt="Background"
-                    className="w-full h-full object-cover object-center opacity-70"
+                    fill
+                    className="object-cover object-center opacity-70"
+                    priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
             </div>
