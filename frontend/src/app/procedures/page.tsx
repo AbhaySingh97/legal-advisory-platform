@@ -44,7 +44,7 @@ export default function ProceduresPage() {
                     </div>
 
                     {/* Search */}
-                    <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 p-6 mb-8">
+                    <div className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 dark:border-slate-700/50 p-6 mb-8">
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                             <input
@@ -52,7 +52,7 @@ export default function ProceduresPage() {
                                 placeholder="Search procedures by name or keywords..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                             />
                         </div>
 
@@ -93,9 +93,9 @@ export default function ProceduresPage() {
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-12 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg">
-                            <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                            <p className="text-gray-600">No procedures found. Try adjusting your search.</p>
+                        <div className="text-center py-12 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-lg">
+                            <FileText className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+                            <p className="text-gray-600 dark:text-gray-300">No procedures found. Try adjusting your search.</p>
                         </div>
                     )}
                 </div>
@@ -142,21 +142,21 @@ function ProcedureModal({ procedure, onClose }: { procedure: Procedure; onClose:
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={onClose}>
             <div
-                className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+                className="bg-white dark:bg-slate-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-start justify-between">
+                <div className="sticky top-0 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700 p-6 flex items-start justify-between">
                     <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="bg-primary-100 p-2 rounded-lg">
                                 <ListChecks className="w-6 h-6 text-primary-600" />
                             </div>
                         </div>
-                        <h2 className="text-2xl font-bold">{procedure.name}</h2>
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{procedure.name}</h2>
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-2 hover:bg-gray-100 rounded-lg transition-colors flex-shrink-0"
+                        className="p-2 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-lg transition-colors flex-shrink-0 text-gray-600 dark:text-gray-300"
                     >
                         <X className="w-6 h-6" />
                     </button>
@@ -164,15 +164,15 @@ function ProcedureModal({ procedure, onClose }: { procedure: Procedure; onClose:
 
                 <div className="p-6">
                     <div className="mb-6">
-                        <h3 className="text-sm font-semibold text-gray-500 uppercase mb-3 flex items-center">
+                        <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3 flex items-center">
                             <FileText className="w-4 h-4 mr-2" />
                             Description
                         </h3>
-                        <p className="text-gray-800 leading-relaxed">{procedure.description}</p>
+                        <p className="text-gray-800 dark:text-gray-200 leading-relaxed">{procedure.description}</p>
                     </div>
 
                     <div className="mb-6">
-                        <h3 className="text-sm font-semibold text-gray-500 uppercase mb-4">Step-by-Step Procedure</h3>
+                        <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-4">Step-by-Step Procedure</h3>
                         <div className="space-y-4">
                             {steps.map((step, index) => (
                                 <div key={index} className="flex items-start">
@@ -180,28 +180,28 @@ function ProcedureModal({ procedure, onClose }: { procedure: Procedure; onClose:
                                         {index + 1}
                                     </div>
                                     <div className="flex-1">
-                                        <p className="text-gray-800 leading-relaxed">{step}</p>
+                                        <p className="text-gray-800 dark:text-gray-200 leading-relaxed">{step}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="bg-primary-50 border border-primary-200 rounded-xl p-4">
-                        <h3 className="text-sm font-semibold text-primary-900 mb-2">💡 Important Note</h3>
-                        <p className="text-sm text-primary-800">
+                    <div className="bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800 rounded-xl p-4">
+                        <h3 className="text-sm font-semibold text-primary-900 dark:text-primary-300 mb-2">💡 Important Note</h3>
+                        <p className="text-sm text-primary-800 dark:text-primary-200">
                             This is a general guide. For specific cases, it's recommended to consult with a legal professional
                             or visit the relevant government office for detailed requirements.
                         </p>
                     </div>
 
                     <div className="mt-6">
-                        <h3 className="text-sm font-semibold text-gray-500 uppercase mb-2">Related Keywords</h3>
+                        <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Related Keywords</h3>
                         <div className="flex flex-wrap gap-2">
                             {procedure.keywords.map((keyword, index) => (
                                 <span
                                     key={index}
-                                    className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
+                                    className="bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm"
                                 >
                                     {keyword}
                                 </span>
