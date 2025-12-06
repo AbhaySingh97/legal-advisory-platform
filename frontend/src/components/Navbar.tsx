@@ -5,18 +5,21 @@ import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { Scale, Menu, X, MessageSquare, BookOpen, Gavel, FileText, ArrowLeft } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
+import LanguageToggle from './LanguageToggle'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const pathname = usePathname()
     const router = useRouter()
+    const { t } = useLanguage()
 
     const navLinks = [
-        { href: '/', label: 'Home', icon: null },
-        { href: '/chatbot', label: 'Chatbot', icon: MessageSquare },
-        { href: '/library', label: 'Library', icon: BookOpen },
-        { href: '/cases', label: 'Cases', icon: Gavel },
-        { href: '/procedures', label: 'Procedures', icon: FileText },
+        { href: '/', label: t('nav.home'), icon: null },
+        { href: '/chatbot', label: t('nav.chatbot'), icon: MessageSquare },
+        { href: '/library', label: t('nav.library'), icon: BookOpen },
+        { href: '/cases', label: t('nav.cases'), icon: Gavel },
+        { href: '/procedures', label: t('nav.procedures'), icon: FileText },
     ]
 
     return (
@@ -53,12 +56,16 @@ export default function Navbar() {
                             </Link>
                         ))}
 
-                        {/* Theme Toggle */}
-                        <ThemeToggle />
+                        {/* Theme & Language Toggles */}
+                        <div className="flex items-center gap-2">
+                            <LanguageToggle />
+                            <ThemeToggle />
+                        </div>
                     </div>
 
-                    {/* Mobile Menu Button & Theme Toggle */}
+                    {/* Mobile Menu Button & Toggles */}
                     <div className="md:hidden flex items-center gap-2">
+                        <LanguageToggle />
                         <ThemeToggle />
                         <button
                             onClick={() => setIsOpen(!isOpen)}
