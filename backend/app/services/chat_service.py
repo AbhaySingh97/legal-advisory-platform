@@ -87,6 +87,68 @@ class ChatService:
 • Right to Freedom (Articles 19-22)
 • Right against Exploitation (Articles 23-24)
 • Right to Freedom of Religion (Articles 25-28)
+• Cultural and Educational Rights (Articles 29-30)
+• Right to Constitutional Remedies (Article 32)
+
+Try asking about a specific article number or right!"""
+        
+        elif any(word in query_lower for word in ['duty', 'duties', 'responsibility']):
+            return \"\"\"**Fundamental Duties (Article 51A):**
+Every citizen has duties including:
+• Respect the Constitution, National Flag & Anthem
+• Uphold sovereignty and integrity of India
+• Protect the environment
+• Develop scientific temper
+• Safeguard public property
+
+Ask "What is Article 51A?" for complete details!\"\"\"
+        
+        elif any(word in query_lower for word in ['president', 'governor', 'executive', 'prime minister', 'minister']):
+            return \"\"\"**Union Executive (Part V):**
+• President of India (Articles 52-62)
+• Vice-President (Articles 63-73)
+• Council of Ministers (Articles 74-75)
+• Attorney-General (Article 76)
+
+Try asking about a specific article!\"\"\"
+        
+        elif any(word in query_lower for word in ['parliament', 'lok sabha', 'rajya sabha', 'legislature']):
+            return \"\"\"**Parliament (Part V):**
+• Constitution of Parliament (Article 79)
+• Lok Sabha - House of the People (Article 81)
+• Rajya Sabha - Council of States (Article 80)
+• Money Bills (Article 110)
+• Budget (Article 112)
+• Ordinances (Article 123)
+
+Ask about specific articles for detailed information!\"\"\"
+        
+        elif any(word in query_lower for word in ['court', 'judge', 'judiciary', 'justice', 'supreme court', 'high court']):
+            return \"\"\"**Judiciary:**
+• Supreme Court (Articles 124-147)
+• High Courts (Articles 214-231)
+• Writs (Articles 32, 226)
+• Judicial Review (Article 13)
+
+Try asking "What is Article 32?" or "What is Article 226?"!\"\"\"
+        
+        else:
+            return \"\"\"I couldn't find specific information about that query. 
+
+**Try asking about:**
+• Specific article numbers (e.g., "What is Article 21?")
+• Fundamental Rights, Duties, or Directive Principles
+• Parliament, President, Supreme Court
+• Legal procedures (e.g., "How to file PIL?")
+• Landmark cases (e.g., "Kesavananda Bharati case")
+
+Type your question and I'll help you find the relevant constitutional provision!\"\"\"
+    
+    async def process_chat_message(self, message: str) -> Dict:
+        """
+        Process a chat message and return appropriate response.
+        """
+        query_lower = message.lower()
         
         # Check for procedure queries
         if any(word in query_lower for word in ['how to', 'procedure', 'process', 'file', 'filing']):
