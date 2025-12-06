@@ -1431,6 +1431,66 @@
         "hindustani"
       ],
       "category": "Language"
+    },
+    {
+      "number": "108",
+      "title": "Joint sitting of both Houses in certain cases",
+      "description": "If after a Bill has been passed by one House and transmitted to the other House is rejected, or the Houses have finally disagreed as to the amendments, the President may summon the Houses to meet in a joint sitting for the purpose of deliberating and voting on the Bill.",
+      "keywords": [
+        "joint sitting",
+        "parliament",
+        "deadlock",
+        "president"
+      ],
+      "category": "Parliament"
+    },
+    {
+      "number": "143",
+      "title": "Power of President to consult Supreme Court",
+      "description": "If at any time it appears to the President that a question of law or fact has arisen which is of such a nature and of such public importance that it is expedient to obtain the opinion of the Supreme Court upon it, he may refer the question to that Court for consideration.",
+      "keywords": [
+        "advisory jurisdiction",
+        "consultation",
+        "president",
+        "supreme court"
+      ],
+      "category": "Union Judiciary"
+    },
+    {
+      "number": "148",
+      "title": "Comptroller and Auditor-General of India",
+      "description": "There shall be a Comptroller and Auditor-General of India who shall be appointed by the President by warrant under his hand and seal.",
+      "keywords": [
+        "CAG",
+        "audit",
+        "accounts",
+        "public finance"
+      ],
+      "category": "Union Executive"
+    },
+    {
+      "number": "280",
+      "title": "Finance Commission",
+      "description": "The President shall, within two years from the commencement of this Constitution and thereafter at the expiration of every fifth year or at such earlier time as the President considers necessary, by order constitute a Finance Commission.",
+      "keywords": [
+        "finance commission",
+        "tax distribution",
+        "grants",
+        "center-state"
+      ],
+      "category": "Finance"
+    },
+    {
+      "number": "324",
+      "title": "Superintendence, direction and control of elections to be vested in an Election Commission",
+      "description": "The superintendence, direction and control of the preparation of the electoral rolls for, and the conduct of, all elections to Parliament and to the Legislature of every State and of elections to the offices of President and Vice-President held under this Constitution shall be vested in a Commission (Election Commission).",
+      "keywords": [
+        "election commission",
+        "voting",
+        "polls",
+        "democracy"
+      ],
+      "category": "Elections"
     }
   ],
   "procedures": [
@@ -1486,6 +1546,84 @@
         "violation"
       ],
       "category": "Legal Procedures"
+    },
+    {
+      "name": "Filing an FIR (First Information Report)",
+      "description": "An FIR is a written document prepared by police when they receive information about the commission of a cognizable offence.",
+      "procedure": "1. Go to the police station having jurisdiction over the area of offence.\n2. Narrate the incident to the Officer-in-Charge or submit a written complaint.\n3. The officer MUST write it down or register it.\n4. Read the recorded information verify details and sign it.\n5. You are entitled to get a free copy of the FIR immediately.\n6. If police refuse, send complaint by post to Superintendent of Police.",
+      "keywords": [
+        "FIR",
+        "police",
+        "complaint",
+        "cognizable offence",
+        "crime"
+      ],
+      "category": "Criminal Law"
+    },
+    {
+      "name": "Filing an RTI Application",
+      "description": "Right to Information (RTI) allows citizens to request information from any public authority/government body.",
+      "procedure": "1. Identify the department you need information from.\n2. Write an application (or use Form A) addressing the Public Information Officer (PIO).\n3. Clearly state the questions/information required.\n4. Pay the fee (usually Rs. 10) via IPO, Demand Draft, or Cash (free for BPL).\n5. Submit by post or online (rtionline.gov.in).\n6. The PIO must reply within 30 days (48 hours for life/liberty issues).",
+      "keywords": [
+        "RTI",
+        "information",
+        "government",
+        "transparency",
+        "PIO"
+      ],
+      "category": "Administrative Law"
+    },
+    {
+      "name": "Filing a Consumer Complaint",
+      "description": "Redressal mechanism for defective goods or deficiency in services under Consumer Protection Act, 2019.",
+      "procedure": "1. Send a legal notice to the service provider/seller giving them a chance to fix the issue.\n2. If unresolved, determine jurisdiction (District/State/National) based on claim value.\n3. Files complaint (online via edaakhil.nic.in or physical).\n4. Attach transaction proofs (bills, warranty cards).\n5. No lawyer is mandatory; you can represent yourself.\n6. Pay nominal court fee.",
+      "keywords": [
+        "consumer court",
+        "complaint",
+        "defective product",
+        "service deficiency",
+        "compensation"
+      ],
+      "category": "Consumer Law"
+    },
+    {
+      "name": "Mutual Consent Divorce",
+      "description": "Fastest way to get a divorce in India under Section 13B of Hindu Marriage Act, when both parties agree.",
+      "procedure": "1. Both parties file a First Motion petition in Family Court stating incompatibility.\n2. Court records statements and grants a 'Cooling-off Period' (6 months, waivable).\n3. If reconciled, petition withdrawn. If not, file Second Motion.\n4. Final hearing and decree of divorce granted.\n5. Total time: 6-18 months.",
+      "keywords": [
+        "divorce",
+        "mutual consent",
+        "family court",
+        "marriage",
+        "separation"
+      ],
+      "category": "Family Law"
+    },
+    {
+      "name": "Cyber Crime Complaint",
+      "description": "Procedure to report online frauds, harassment, or hacking.",
+      "procedure": "1. Visit the National Cyber Crime Reporting Portal (cybercrime.gov.in).\n2. Register/Login using mobile number.\n3. Select category (Financial Fraud / Women & Child / Other).\n4. Provide incident details, suspect details (if any), and upload screenshots/evidence.\n5. Submit complaint. An acknowledgement number is generated.\n6. Alternatively, visit local Cyber Cell or call 1930.",
+      "keywords": [
+        "cyber crime",
+        "hacking",
+        "fraud",
+        "online safety",
+        "police"
+      ],
+      "category": "Cyber Law"
+    },
+    {
+      "name": "Anticipatory Bail Application",
+      "description": "Legal provision to seek bail in anticipation of arrest for a non-bailable offence (Section 438 CrPC/482 BNSS).",
+      "procedure": "1. Contact a lawyer immediately if you fear arrest.\n2. File application in Sessions Court or High Court.\n3. Court hears the application; Public Prosecutor may oppose.\n4. If granted, police cannot arrest you (or must release on bail immediately upon formal arrest).\n5. Court may impose conditions (surrender passport, join investigation).",
+      "keywords": [
+        "bail",
+        "arrest",
+        "criminal",
+        "anticipatory",
+        "court"
+      ],
+      "category": "Criminal Law"
     }
   ],
   "landmark_cases": [
@@ -1681,6 +1819,101 @@
         "navtej johar"
       ],
       "category": "Landmark Judgments"
+    },
+    {
+      "name": "Indra Sawhney v. Union of India (1992)",
+      "year": "1992",
+      "significance": "Upheld 27% OBC reservation but capped total reservation at 50%. Excluded 'creamy layer'.",
+      "key_points": [
+        "Reservation cap 50%",
+        "Creamy layer exclusion",
+        "No reservation in promotion",
+        "Article 16(4)"
+      ],
+      "keywords": [
+        "mandal commission",
+        "reservation",
+        "OBC",
+        "equality"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "Indra Sawhney v. Union of India (1992), also known as the Mandal Commission case, is a landmark judgment on reservation in India. The 9-judge bench upheld the 27% reservation for Other Backward Classes (OBCs) in government jobs but laid down significant restrictions. It established a 50% ceiling on total reservations, ruling that reservation is an exception to the rule of equality and cannot exceed this limit. It also introduced the concept of the 'creamy layer,' excluding wealthy and socially advanced members of backward classes from reservation benefits. The court also held that reservation applies only to initial appointments and not to promotions."
+    },
+    {
+      "name": "M.C. Mehta v. Union of India (1987)",
+      "year": "1987",
+      "significance": "Established 'Absolute Liability' principle for hazardous industries. Oleum Gas Leak case.",
+      "key_points": [
+        "Absolute liability",
+        "Deep pocket theory",
+        "Environmental protection",
+        "Hazardous industry"
+      ],
+      "keywords": [
+        "oleum gas",
+        "environment",
+        "absolute liability",
+        "pollution"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "M.C. Mehta v. Union of India (1987), arising from the Oleum Gas Leak in Delhi, established the principle of 'Absolute Liability' in Indian tort law. Departing from the 19th-century English rule of 'Strict Liability' (which had exceptions), the Supreme Court held that enterprises engaged in hazardous or inherently dangerous activities are absolutely liable for any harm caused, with no exceptions or defenses. The measure of compensation must be correlated to the magnitude and capacity of the enterprise (Deep Pocket Theory) to have a deterrent effect."
+    },
+    {
+      "name": "Common Cause v. Union of India (2018)",
+      "year": "2018",
+      "significance": "Legalized Passive Euthanasia and 'Living Wills'. Recognized Right to Die with Dignity.",
+      "key_points": [
+        "Passive euthanasia",
+        "Living will",
+        "Right to die with dignity",
+        "Article 21"
+      ],
+      "keywords": [
+        "euthanasia",
+        "living will",
+        "dignity",
+        "life support"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "In Common Cause v. Union of India (2018), a 5-judge Constitution Bench recognized the 'Right to Die with Dignity' as a fundamental right under Article 21. The Court legalized 'Passive Euthanasia' (withdrawing life support for terminally ill patients) and validated 'Advance Medical Directives' or 'Living Wills,' where individuals can specify their refusal of medical treatment if they become incapacitated. The judgment distinguished passive euthanasia from active euthanasia (which remains illegal) and laid down stringent guidelines and a medical board procedure for its implementation."
+    },
+    {
+      "name": "Joseph Shine v. Union of India (2018)",
+      "year": "2018",
+      "significance": "Decriminalized Adultery by striking down Section 497 IPC.",
+      "key_points": [
+        "Section 497",
+        "Adultery",
+        "Gender equality",
+        "Husband not master of wife"
+      ],
+      "keywords": [
+        "adultery",
+        "decriminalization",
+        "gender justice",
+        "IPC"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "Joseph Shine v. Union of India (2018) struck down Section 497 of the Indian Penal Code, which criminalized adultery. The law was archaic, treating women as the property of their husbands (only men could be prosecuted, and only if the husband didn't consent). The Supreme Court unanimously ruled the section unconstitutional for violating Articles 14 (Equality), 15 (Non-discrimination), and 21 (Life and Liberty). It held that 'husband is not the master of wife' and that adultery can be a ground for divorce but not a criminal offence."
+    },
+    {
+      "name": "M Siddiq v. Mahant Suresh Das (2019)",
+      "year": "2019",
+      "significance": "Ayodhya Verdict. Settled the decades-old Ram Janmabhoomi-Babri Masjid land dispute.",
+      "key_points": [
+        "Ayodhya dispute",
+        "Title suit",
+        "ASI report",
+        "Article 142"
+      ],
+      "keywords": [
+        "ayodhya",
+        "ram mandir",
+        "babri masjid",
+        "land dispute"
+      ],
+      "category": "Landmark Judgments",
+      "detailed_explanation": "The Ayodhya Verdict (2019) resolved the century-old dispute over the Ram Janmabhoomi-Babri Masjid site. A 5-judge bench unanimously awarded the disputed 2.77 acres of land to the Hindu parties for the construction of a Ram Temple, relying on archaeological evidence (ASI report) indicating a pre-existing non-Islamic structure. Using its special powers under Article 142 to ensure complete justice, the Court also directed the government to allot an alternative 5-acre plot in Ayodhya to the Sunni Waqf Board for the construction of a mosque."
     }
   ],
   "quick_replies": [
