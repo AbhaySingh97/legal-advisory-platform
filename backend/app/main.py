@@ -11,7 +11,12 @@ from app.core.database import db
 async def lifespan(app: FastAPI):
     # Startup: Connect to MongoDB
     import certifi
-    db.client = AsyncIOMotorClient(settings.DATABASE_URL, tlsCAFile=certifi.where())
+    # Using tlsAllowInvalidCertificates=True to match the migration script stability
+    db.client = AsyncIOMotorClient(
+        settings.DATABASE_URL, 
+        tlsCAFile=certifi.where(),
+        tlsAllowInvalidCertificates=True
+    )
     print(f"Connected to MongoDB at {settings.DATABASE_URL}")
     yield
     # Shutdown: Close connection
