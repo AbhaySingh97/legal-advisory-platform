@@ -7,6 +7,6 @@ class Database:
 
 db = Database()
 
-async def get_database():
+async def get_db():
     """Dependency that returns the database instance."""
     return db.client[settings.DATABASE_NAME]
