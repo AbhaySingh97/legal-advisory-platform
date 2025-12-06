@@ -33,7 +33,7 @@ export default function AnimatedCounter({ end, duration = 2000, suffix = '', pre
     }, [end, duration])
 
     return (
-        <span className="font-bold text-4xl md:text-5xl gradient-text">
+        <span className="font-bold text-4xl md:text-5xl text-white">
             {prefix}{count.toLocaleString()}{suffix}
         </span>
     )

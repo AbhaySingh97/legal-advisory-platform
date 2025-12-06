@@ -50,10 +50,8 @@ export default function HomePage() {
                         </div>
 
                         {/* Main Heading with Gradient */}
-                        <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 fade-in-up stagger-1">
-                            <span className="gradient-text neon-glow">
-                                Your Complete Legal Advisory Platform
-                            </span>
+                        <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 fade-in-up stagger-1 text-white">
+                            Your Complete Legal Advisory Platform
                         </h1>
 
                         {/* Subheading */}
